@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -30,6 +31,10 @@ public class MecanumDriveSubsystem extends SubsystemBase {
 
   public void drive(double forward, double right, double clockwise) {
     drive.driveCartesian(right, forward, clockwise);
+    SmartDashboard.putNumber("frontLeft", frontLeft.get());
+    SmartDashboard.putNumber("frontRight", frontRight.get());
+    SmartDashboard.putNumber("rearLeft", rearLeft.get());
+    SmartDashboard.putNumber("rearRight",rearRight.get());
   }
 
   @Override
