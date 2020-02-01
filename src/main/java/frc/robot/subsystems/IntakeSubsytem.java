@@ -20,7 +20,7 @@ public class IntakeSubsytem extends SubsystemBase {
    * Creates a new IntakeSubsytem.
    */
   public IntakeSubsytem() {
-    lowerIntake.setInverted(true);
+    upperIntake.setInverted(true);
   }
 
   public void intake(boolean lower, boolean upper) {
