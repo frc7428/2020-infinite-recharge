@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.drive.DriveCommand;
+import frc.robot.commands.intake.IntakeCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.IntakeSubsytem;
 import frc.robot.subsystems.MecanumDriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -27,6 +29,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final MecanumDriveSubsystem driveSubsystem = new MecanumDriveSubsystem();
+  private final IntakeSubsytem intakeSubsystem = new IntakeSubsytem();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
@@ -40,6 +43,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     driveSubsystem.setDefaultCommand(new DriveCommand(driveSubsystem, driveJoystick));
+    intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, driveJoystick));
   }
 
   /**
