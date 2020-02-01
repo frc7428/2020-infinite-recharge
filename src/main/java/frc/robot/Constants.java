@@ -20,5 +20,8 @@ public final class Constants {
     public static final int FRONT_RIGHT_CAN_ID = 2;
     public static final int REAR_LEFT_CAN_ID = 3;
     public static final int REAR_RIGHT_CAN_ID = 4;
+
+    public static final int DRIVE_JOYSTICK_USB_ID = 0;
+    
     
 }
