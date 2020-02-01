@@ -18,9 +18,8 @@ public class MecanumDriveSubsystem extends SubsystemBase {
   private final WPI_VictorSPX frontLeft = new WPI_VictorSPX(Constants.FRONT_LEFT_CAN_ID);
   private final WPI_VictorSPX frontRight = new WPI_VictorSPX(Constants.FRONT_RIGHT_CAN_ID);
   private final WPI_VictorSPX rearLeft = new WPI_VictorSPX(Constants.REAR_LEFT_CAN_ID);
-  private final WPI_VictorSPX rearRight= new WPI_VictorSPX(Constants.REAR_RIGHT_CAN_ID);
+  private final WPI_VictorSPX rearRight = new WPI_VictorSPX(Constants.REAR_RIGHT_CAN_ID);
   private final MecanumDrive drive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
-
 
   /**
    * Creates a new MecanumDrive.
@@ -30,11 +29,20 @@ public class MecanumDriveSubsystem extends SubsystemBase {
   }
 
   public void drive(double forward, double right, double clockwise) {
-    drive.driveCartesian(right, forward, clockwise);
+    double scaledRight = Math.pow(right, 3);
+    double scaledForward = Math.pow(forward, 3);
+    double scaledClockwise = 0.5 * clockwise;
+
+    drive.driveCartesian(scaledRight, scaledForward, scaledClockwise);
+
+    SmartDashboard.putNumber("Scaled right", scaledRight);
+    SmartDashboard.putNumber("Scaled forward", scaledForward);
+    SmartDashboard.putNumber("Scaled clockwise", scaledClockwise);
+
     SmartDashboard.putNumber("frontLeft", frontLeft.get());
     SmartDashboard.putNumber("frontRight", frontRight.get());
     SmartDashboard.putNumber("rearLeft", rearLeft.get());
-    SmartDashboard.putNumber("rearRight",rearRight.get());
+    SmartDashboard.putNumber("rearRight", rearRight.get());
   }
 
   @Override
