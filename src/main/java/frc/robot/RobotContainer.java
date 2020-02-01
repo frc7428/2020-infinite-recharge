@@ -9,9 +9,15 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.test.TestLeft;
+import frc.robot.commands.test.TestRight;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.TestBench;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -22,8 +28,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
+  private final TestBench testBench = new TestBench(); 
+  private final XboxController Controller = new XboxController(0);
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  
+  
 
 
 
@@ -42,6 +51,14 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    JoystickButton RightBumper = new JoystickButton(Controller, XboxController.Button.kBumperRight.value);
+    RightBumper.whenHeld(new
+     TestRight(testBench, 1));
+    RightBumper.whenReleased(new TestRight(testBench, 0)); 
+
+    JoystickButton LeftBumper = new JoystickButton(Controller, XboxController.Button.kBumperLeft.value); 
+    LeftBumper.whenHeld(new TestLeft(testBench, 1));
+    LeftBumper.whenReleased(new TestLeft(testBench, 0));
   }
 
 
