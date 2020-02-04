@@ -29,5 +29,6 @@ public final class Constants {
     public static final int LOWER_INTAKE_BUTTON = 2;
     public static final int UPPER_INTAKE_BUTTON = 7; 
 
+    public static final int SHOOTER_BUTTON = 1;
     
 }
