@@ -10,7 +10,6 @@ package frc.robot.commands.shooter;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants;
 import frc.robot.subsystems.ShooterSubsystem;
 
 
@@ -22,7 +21,7 @@ public class ShooterCommand extends CommandBase {
    */
   public ShooterCommand(ShooterSubsystem shooter,Joystick joystick) {
     mShooter = shooter;
-    mShooterControl = new JoystickButton(joystick, Constants.SHOOTER_BUTTON);
+    mShooterControl = new JoystickButton(joystick, 1);
     addRequirements(mShooter);
     // Use addRequirements() here to declare subsystem dependencies.
   }

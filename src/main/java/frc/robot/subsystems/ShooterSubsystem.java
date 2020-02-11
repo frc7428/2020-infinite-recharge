@@ -11,15 +11,15 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 
 public class ShooterSubsystem extends SubsystemBase {
-  private final CANSparkMax pewPew = new CANSparkMax(Constants.SHOOTER_BUTTON, MotorType.kBrushless);
+  private final CANSparkMax pewPew = new CANSparkMax(1, MotorType.kBrushless);
 
   /**
    * Creates a new ShooterSubsystem.
    */
   public ShooterSubsystem() {
+    pewPew.setInverted(true);
   }
   public void shooter(boolean shooter) {
     pewPew.set(shooter ? 1 : 0);
