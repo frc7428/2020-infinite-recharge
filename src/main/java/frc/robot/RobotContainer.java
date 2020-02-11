@@ -17,6 +17,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsytem;
 import frc.robot.subsystems.MecanumDriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -34,14 +35,14 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   private final Joystick driveJoystick = new Joystick(Constants.DRIVE_JOYSTICK_USB_ID);
-
+  private final ShooterSubsystem shooterSubsystem  = new ShooterSubsystem();
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-
+    shooterSubsystem.setDefaultcommand(new shooterCommand(shooterSubsystem, drivejoystick));
     driveSubsystem.setDefaultCommand(new DriveCommand(driveSubsystem, driveJoystick));
     intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, driveJoystick));
   }

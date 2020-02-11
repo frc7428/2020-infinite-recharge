@@ -10,16 +10,15 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterSubsystem extends SubsystemBase {
-  private final CANSparkMax pewPew = new CANSparkMax(Constants.SHOOTER_BUTTON, MotorType.kBrushless);
+  private final CANSparkMax shooter = new CANSparkMax(Constants.SHOOTER_BUTTON, MotorType.kBrushless);
 
   /**
    * Creates a new ShooterSubsystem.
    */
   public ShooterSubsystem() {
-
   }
   public void shooter(boolean pew) {
-    pewPew.set(pew ? 1 : 0);
+    shooter.set(shooter ? 1 : 0);
   }
 
   @Override
