@@ -24,10 +24,12 @@ public final class Constants {
     public static final int UPPER_INTAKE_CAN_ID = 5;
 
     public static final int DRIVE_JOYSTICK_USB_ID = 0;
+    public static final int XBOX_CONTROLLER_USB_ID = 1;
     
     public static final int LOWER_INTAKE_BUTTON = 2;
     public static final int UPPER_INTAKE_BUTTON = 7; 
 
+    public static final int COLOR_WHEEL_BUTTON = 3;
     public static final int SHOOTER_BUTTON = 1;
     
 }
