@@ -7,20 +7,20 @@
 
 package frc.robot.commands.shooter;
 
-import edu.wpi.first.wpilibj.joystick;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
-import frc.robot.subsystems.shooterSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 
-public class shooterCommand extends CommandBase {
+public class ShooterCommand extends CommandBase {
   private final ShooterSubsystem mShooter;
   private final JoystickButton mShooterControl;
   /**
    * Creates a new shooterCommand.
    */
-  public shooterCommand(ShooterSubsystem shooter,Joystick joystick) {
+  public ShooterCommand(ShooterSubsystem shooter,Joystick joystick) {
     mShooter = shooter;
     mShooterControl = new JoystickButton(joystick, Constants.SHOOTER_BUTTON);
     addRequirements(mShooter);
@@ -35,7 +35,7 @@ public class shooterCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mShooter.shooter(MShooterControl.get());
+    mShooter.shooter(mShooterControl.get());
   }
 
   // Called once the command ends or is interrupted.

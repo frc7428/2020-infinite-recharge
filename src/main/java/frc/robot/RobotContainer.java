@@ -4,7 +4,6 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
@@ -13,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
+import frc.robot.commands.shooter.ShooterCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsytem;
 import frc.robot.subsystems.MecanumDriveSubsystem;
@@ -31,9 +31,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final MecanumDriveSubsystem driveSubsystem = new MecanumDriveSubsystem();
   private final IntakeSubsytem intakeSubsystem = new IntakeSubsytem();
-
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
   private final Joystick driveJoystick = new Joystick(Constants.DRIVE_JOYSTICK_USB_ID);
   private final ShooterSubsystem shooterSubsystem  = new ShooterSubsystem();
   /**
@@ -42,11 +40,10 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    shooterSubsystem.setDefaultcommand(new shooterCommand(shooterSubsystem, drivejoystick));
+    shooterSubsystem.setDefaultCommand(new ShooterCommand(shooterSubsystem, driveJoystick));
     driveSubsystem.setDefaultCommand(new DriveCommand(driveSubsystem, driveJoystick));
     intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, driveJoystick));
   }
-
   /**
    * Use this method to define your button->command mappings. Buttons can be
    * created by instantiating a {@link GenericHID} or one of its subclasses
@@ -55,7 +52,6 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
   }
-
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
