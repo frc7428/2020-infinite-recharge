@@ -7,23 +7,17 @@
 
 package frc.robot.commands.colorWheel;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants;
-import frc.robot.subsystems.ColorWheelSubsystem;
 
 public class colorWheelCommand extends CommandBase {
-  private final ColorWheelSubsystem mColorWheel;
-  private final JoystickButton mColorWheelControl;
+mWheel = wheel;
+mWheelController = new JoystickButton(joystick, 3)
+addRequirements
   /**
    *
    * Creates a new colorWheelCommand.
    */
-  public colorWheelCommand(ColorWheelSubsystem colorWheel, Joystick joystick) {
-    mColorWheel = colorWheel;
-    mColorWheelControl = new JoystickButton(joystick, Constants.COLOR_WHEEL_BUTTON);
-    addRequirements(mColorWheel);
+  public colorWheelCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -35,7 +29,6 @@ public class colorWheelCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mColorWheel.colorWheel(mColorWheelControl.get());
   }
 
   // Called once the command ends or is interrupted.

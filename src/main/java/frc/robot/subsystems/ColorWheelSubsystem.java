@@ -7,26 +7,26 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ColorWheelSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX Wheel = new WPI_VictorSPX(Constants.COLOR_WHEEL_BUTTON);
+  private final WPI_VictorSPX colorWheel = new WPI_VictorSPX(Constants.COLOR_WHEEL_BUTTON);
   /**
    * Creates a new ColorWheelSubsystem.
    */
   public ColorWheelSubsystem() {
   }
 
-  public void colorWheel(boolean colorWheel) {
-    Wheel.set(colorWheel ? 1 : 0);
+  public void intake(boolean wheel) {
+    colorWheel.set(wheel ? 1 : 0);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
 }
