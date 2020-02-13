@@ -13,7 +13,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterSubsystem extends SubsystemBase {
-  private final CANSparkMax pewPew = new CANSparkMax(1, MotorType.kBrushless);
+  private final CANSparkMax pewPew = new CANSparkMax(4, MotorType.kBrushless);
 
   /**
    * Creates a new ShooterSubsystem.

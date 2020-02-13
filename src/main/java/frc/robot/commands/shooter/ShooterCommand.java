@@ -7,19 +7,19 @@
 
 package frc.robot.commands.shooter;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.ShooterSubsystem;
 
-
 public class ShooterCommand extends CommandBase {
   private final ShooterSubsystem mShooter;
   private final JoystickButton mShooterControl;
+
   /**
    * Creates a new shooterCommand.
    */
-  public ShooterCommand(ShooterSubsystem shooter,Joystick joystick) {
+  public ShooterCommand(ShooterSubsystem shooter, GenericHID joystick) {
     mShooter = shooter;
     mShooterControl = new JoystickButton(joystick, 1);
     addRequirements(mShooter);
