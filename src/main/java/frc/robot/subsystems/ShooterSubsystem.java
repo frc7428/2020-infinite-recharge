@@ -10,19 +10,27 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class ShooterSubsystem extends SubsystemBase {
-  private final CANSparkMax pewPew = new CANSparkMax(4, MotorType.kBrushless);
+  private final SpeedControllerGroup pew; 
+  
 
   /**
    * Creates a new ShooterSubsystem.
    */
   public ShooterSubsystem() {
-    pewPew.setInverted(true);
+    CANSparkMax pewLeft = new CANSparkMax(Constants.PEW_LEFT_CAN_ID, MotorType.kBrushless);
+    CANSparkMax pewRight = new CANSparkMax(Constants.PEW_RIGHT_CAN_ID, MotorType.kBrushless);
+    pewLeft.setInverted(true);
+
+    pew = new SpeedControllerGroup(pewLeft, pewRight);
   }
-  public void shooter(boolean shooter) {
-    pewPew.set(shooter ? 1 : 0);
+  public void shooter(boolean on) {
+    pew.set(on ? 1 : 0); 
+    
   }
 
   @Override

@@ -7,25 +7,20 @@
 
 package frc.robot.commands.intake;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants;
 import frc.robot.subsystems.IntakeSubsytem;
 
 public class IntakeCommand extends CommandBase {
   private final IntakeSubsytem mIntake;
-  private final JoystickButton mLowerControl;
-  private final JoystickButton mUpperControl;
+  private final boolean mOn; 
 
   /**
    * Creates a new IntakeCommand.
    */
-  public IntakeCommand(IntakeSubsytem intake,Joystick joystick) {
+  public IntakeCommand(IntakeSubsytem intake, boolean on) {
     // Use addRequirements() here to declare subsystem dependencies.
     mIntake = intake; 
-    mLowerControl = new JoystickButton(joystick, Constants.LOWER_INTAKE_BUTTON);
-    mUpperControl = new JoystickButton(joystick, Constants.UPPER_INTAKE_BUTTON);
+    mOn = on; 
     addRequirements(mIntake);
   }
 
@@ -38,7 +33,7 @@ public class IntakeCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mIntake.intake(mLowerControl.get(), mUpperControl.get());
+    mIntake.intake(mOn); 
   }
 
   // Called once the command ends or is interrupted.
@@ -49,6 +44,6 @@ public class IntakeCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

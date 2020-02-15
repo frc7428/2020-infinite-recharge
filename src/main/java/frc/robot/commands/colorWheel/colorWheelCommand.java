@@ -5,24 +5,21 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.colorWheel;
+package frc.robot.commands.colorwheel;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants;
 import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class colorWheelCommand extends CommandBase {
+public class ColorWheelCommand extends CommandBase {
   private final ColorWheelSubsystem mColorWheel;
-  private final JoystickButton mColorWheelControl;
+  private final boolean mOn; 
   /**
    *
    * Creates a new colorWheelCommand.
    */
-  public colorWheelCommand(ColorWheelSubsystem colorWheel, Joystick joystick) {
+  public ColorWheelCommand(ColorWheelSubsystem colorWheel, boolean on) {
     mColorWheel = colorWheel;
-    mColorWheelControl = new JoystickButton(joystick, Constants.COLOR_WHEEL_BUTTON);
+    mOn = on;
     addRequirements(mColorWheel);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -35,7 +32,7 @@ public class colorWheelCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mColorWheel.colorWheel(mColorWheelControl.get());
+    mColorWheel.colorWheel(mOn);
   }
 
   // Called once the command ends or is interrupted.
@@ -46,6 +43,6 @@ public class colorWheelCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true; 
   }
 }

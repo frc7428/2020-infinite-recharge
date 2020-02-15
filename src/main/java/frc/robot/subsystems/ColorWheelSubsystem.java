@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ColorWheelSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX Wheel = new WPI_VictorSPX(Constants.COLOR_WHEEL_BUTTON);
+  private final WPI_VictorSPX Wheel = new WPI_VictorSPX(Constants.COLOR_WHEEL_CAN_ID);
   /**
    * Creates a new ColorWheelSubsystem.
    */

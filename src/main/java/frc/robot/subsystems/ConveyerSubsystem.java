@@ -8,21 +8,23 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import frc.robot.Constants;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ActuatorsSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX leftActuator = new WPI_VictorSPX(Constants.LEFT_ACTUATOR_CAN_ID);
-  private final WPI_VictorSPX rightActuator = new WPI_VictorSPX(Constants.RIGHT_ACTUATOR_CAN_ID);
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+
+public class ConveyerSubsystem extends SubsystemBase {
+  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.CONVEYER_CAN_ID);
   /**
-   * Creates a new ActuatorsSubsystem.
+   * Creates a new ConveyerSubsystem.
    */
-  public ActuatorsSubsystem() {
+  public ConveyerSubsystem() {
+    conveyer.setInverted(true);
   }
-  public void actuators(boolean left, boolean right) {
-    leftActuator.set(left ? 1 : 0);
-    rightActuator.set(right ? 1 : 0);  
+
+  public void convey(boolean on) {
+    conveyer.set(on ? 1 : 0);
   }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
