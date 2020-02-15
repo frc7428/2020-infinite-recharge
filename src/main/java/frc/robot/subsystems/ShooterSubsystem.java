@@ -7,23 +7,30 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class IntakeSubsytem extends SubsystemBase {
-  private final WPI_VictorSPX intake = new WPI_VictorSPX(Constants.INTAKE_CAN_ID);
+public class ShooterSubsystem extends SubsystemBase {
+  private final SpeedControllerGroup pew; 
   
-  /**
-   * Creates a new IntakeSubsytem.
-   */
-  public IntakeSubsytem() {
-  }
 
-  public void intake(boolean on) {
-    intake.set(on ? 1 : 0);
+  /**
+   * Creates a new ShooterSubsystem.
+   */
+  public ShooterSubsystem() {
+    CANSparkMax pewLeft = new CANSparkMax(Constants.PEW_LEFT_CAN_ID, MotorType.kBrushless);
+    CANSparkMax pewRight = new CANSparkMax(Constants.PEW_RIGHT_CAN_ID, MotorType.kBrushless);
+    pewLeft.setInverted(true);
+
+    pew = new SpeedControllerGroup(pewLeft, pewRight);
+  }
+  public void shooter(boolean on) {
+    pew.set(on ? 1 : 0); 
+    
   }
 
   @Override

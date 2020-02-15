@@ -5,27 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.intake;
+package frc.robot.commands.actuators;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.IntakeSubsytem;
+import frc.robot.subsystems.LeftActuatorSubsystem;
 
-public class IntakeCommand extends CommandBase {
-  private final IntakeSubsytem mIntake;
-  private final boolean mOn; 
+public class LeftActuatorCommand extends CommandBase {
+  private final LeftActuatorSubsystem mActuator;
+  private final boolean mOn;
 
   /**
-   * Creates a new IntakeCommand.
+   * Creates a new ActuatorsCommand.
    */
-  public IntakeCommand(IntakeSubsytem intake, boolean on) {
+  public LeftActuatorCommand(LeftActuatorSubsystem actuator, boolean on) {
     // Use addRequirements() here to declare subsystem dependencies.
-    mIntake = intake; 
+    mActuator = actuator;
     mOn = on; 
-    addRequirements(mIntake);
-  }
+    addRequirements(mActuator);
 
+  }
 
   // Called when the command is initially scheduled.
   @Override
@@ -35,7 +33,7 @@ public class IntakeCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mIntake.intake(mOn); 
+    mActuator.actuate(mOn); 
   }
 
   // Called once the command ends or is interrupted.

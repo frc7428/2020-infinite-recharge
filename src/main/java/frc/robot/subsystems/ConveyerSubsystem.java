@@ -7,23 +7,22 @@
 
 package frc.robot.subsystems;
 
-
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class IntakeSubsytem extends SubsystemBase {
-  private final WPI_VictorSPX intake = new WPI_VictorSPX(Constants.INTAKE_CAN_ID);
-  
+public class ConveyerSubsystem extends SubsystemBase {
+  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.CONVEYER_CAN_ID);
   /**
-   * Creates a new IntakeSubsytem.
+   * Creates a new ConveyerSubsystem.
    */
-  public IntakeSubsytem() {
+  public ConveyerSubsystem() {
+    conveyer.setInverted(true);
   }
 
-  public void intake(boolean on) {
-    intake.set(on ? 1 : 0);
+  public void convey(boolean on) {
+    conveyer.set(on ? 1 : 0);
   }
 
   @Override

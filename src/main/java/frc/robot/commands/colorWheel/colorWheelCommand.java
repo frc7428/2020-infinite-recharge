@@ -5,27 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.intake;
+package frc.robot.commands.colorwheel;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.IntakeSubsytem;
+import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class IntakeCommand extends CommandBase {
-  private final IntakeSubsytem mIntake;
+public class ColorWheelCommand extends CommandBase {
+  private final ColorWheelSubsystem mColorWheel;
   private final boolean mOn; 
-
   /**
-   * Creates a new IntakeCommand.
+   *
+   * Creates a new colorWheelCommand.
    */
-  public IntakeCommand(IntakeSubsytem intake, boolean on) {
+  public ColorWheelCommand(ColorWheelSubsystem colorWheel, boolean on) {
+    mColorWheel = colorWheel;
+    mOn = on;
+    addRequirements(mColorWheel);
     // Use addRequirements() here to declare subsystem dependencies.
-    mIntake = intake; 
-    mOn = on; 
-    addRequirements(mIntake);
   }
-
 
   // Called when the command is initially scheduled.
   @Override
@@ -35,7 +32,7 @@ public class IntakeCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mIntake.intake(mOn); 
+    mColorWheel.colorWheel(mOn);
   }
 
   // Called once the command ends or is interrupted.
@@ -46,6 +43,6 @@ public class IntakeCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return true; 
   }
 }

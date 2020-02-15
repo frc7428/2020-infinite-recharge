@@ -5,27 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.intake;
+package frc.robot.commands.shooter;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.IntakeSubsytem;
+import frc.robot.subsystems.ShooterSubsystem;
 
-public class IntakeCommand extends CommandBase {
-  private final IntakeSubsytem mIntake;
-  private final boolean mOn; 
+public class ShooterCommand extends CommandBase {
+  private final ShooterSubsystem mShooter;
+  private final boolean mOn;
 
   /**
-   * Creates a new IntakeCommand.
+   * Creates a new shooterCommand.
    */
-  public IntakeCommand(IntakeSubsytem intake, boolean on) {
+  public ShooterCommand(ShooterSubsystem shooter, boolean on) {
+    mShooter = shooter;
+    mOn = on;
+    addRequirements(mShooter);
     // Use addRequirements() here to declare subsystem dependencies.
-    mIntake = intake; 
-    mOn = on; 
-    addRequirements(mIntake);
   }
-
 
   // Called when the command is initially scheduled.
   @Override
@@ -35,7 +32,7 @@ public class IntakeCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mIntake.intake(mOn); 
+    mShooter.shooter(mOn);
   }
 
   // Called once the command ends or is interrupted.
