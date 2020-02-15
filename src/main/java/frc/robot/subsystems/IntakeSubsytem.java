@@ -15,6 +15,7 @@ import frc.robot.Constants;
 
 public class IntakeSubsytem extends SubsystemBase {
   private final WPI_VictorSPX intake = new WPI_VictorSPX(Constants.INTAKE_CAN_ID);
+  
   /**
    * Creates a new IntakeSubsytem.
    */

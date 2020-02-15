@@ -29,8 +29,6 @@ public final class Constants {
     public static final int LEFT_ACTUATOR_CAN_ID = 10;
     public static final int PEW_LEFT_CAN_ID = 1; 
     public static final int PEW_RIGHT_CAN_ID = 2; 
-
-
     public static final int DRIVE_JOYSTICK_USB_ID = 0;
     public static final int XBOX_CONTROLLER_USB_ID = 1;
     

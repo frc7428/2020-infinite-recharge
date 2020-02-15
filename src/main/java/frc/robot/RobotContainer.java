@@ -18,13 +18,6 @@ import frc.robot.commands.intake.IntakeCommand;
 import frc.robot.commands.shooter.ShooterCommand;
 import frc.robot.subsystems.IntakeSubsytem;
 import frc.robot.subsystems.LeftActuatorSubsystem;
-import frc.robot.subsystems.MecanumDriveSubsystem;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.RightActuatorSubsystem;
-import frc.robot.subsystems.ColorWheelSubsystem;
-import frc.robot.subsystems.ConveyerSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -45,7 +38,6 @@ public class RobotContainer {
   private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem(); 
   private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem(); 
 
-
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -55,7 +47,6 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(new DriveCommand(driveSubsystem, driveJoystick));
   }
   /**
-   * 
    * Use this method to define your button->command mappings. Buttons can be
    * created by instantiating a {@link GenericHID} or one of its subclasses
    * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
@@ -85,12 +76,8 @@ public class RobotContainer {
     JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.COLOR_WHEEL_BUTTON);
     colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
     colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false)); 
-    
-
-
-    
   }
-
+  
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
@@ -98,6 +85,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null; 
+    return null;
   }
 }
