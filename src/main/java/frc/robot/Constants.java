@@ -33,9 +33,11 @@ public final class Constants {
     public static final int XBOX_CONTROLLER_USB_ID = 1;
     
     public static final int INTAKE_BUTTON = 2;
+    public static final int INVERT_INTAKE_BUTTON = XboxController.Button.kA.value; 
     public static final int CONVEYER_BUTTON = XboxController.Button.kX.value; 
+    public static final int INVERT_CONVEYER_BUTTON = XboxController.Button.kB.value; 
 
-    public static final int COLOR_WHEEL_BUTTON = XboxController.Button.kB.value;
+   //public static final int COLOR_WHEEL_BUTTON = XboxController.Button.kB.value;
     public static final int SHOOTER_BUTTON = XboxController.Button.kY.value;
 
     public static final int RIGHT_ACTUATOR_BUTTON = XboxController.Button.kBumperRight.value;

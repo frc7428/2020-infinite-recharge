@@ -7,28 +7,31 @@
 
 package frc.robot.subsystems;
 
-
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class IntakeSubsytem extends SubsystemBase {
+public class InvertIntakeSubsystem extends SubsystemBase {
   private final WPI_VictorSPX intake = new WPI_VictorSPX(Constants.INTAKE_CAN_ID);
-  
+
   /**
-   * Creates a new IntakeSubsytem.
+   * Creates a new InvertIntakeSubsystem.
    */
-  public IntakeSubsytem() {
-    SmartDashboard.putNumber("Intake", 1);
+  public InvertIntakeSubsystem() {
+    SmartDashboard.putNumber("InvertIntake", 1);
+    intake.setInverted(true);
+
+
   }
 
   public void intake(boolean on) {
-    double speed = SmartDashboard.getNumber("Intake", 1);
+    double speed = SmartDashboard.getNumber("InvertIntake", 1);
     if (speed > 1) speed = 1;
     else if (speed < -1) speed = -1;
-    intake.set(on ? speed : 0);
+
+    intake.set(on ? speed : 0); 
   }
 
   @Override

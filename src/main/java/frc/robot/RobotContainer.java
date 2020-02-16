@@ -17,8 +17,10 @@ import frc.robot.commands.colorwheel.ColorWheelCommand;
 import frc.robot.commands.conveyer.ConveyerCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
+import frc.robot.commands.invertintake.InvertIntakeCommand;
 import frc.robot.commands.shooter.ShooterCommand;
 import frc.robot.subsystems.ColorWheelSubsystem;
+import frc.robot.subsystems.InvertIntakeSubsystem;
 import frc.robot.subsystems.ConveyerSubsystem;
 import frc.robot.subsystems.IntakeSubsytem;
 import frc.robot.subsystems.LeftActuatorSubsystem;
@@ -34,16 +36,18 @@ import frc.robot.subsystems.ShooterSubsystem;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
   // The robot's subsystems and commands are defined here...
   private final MecanumDriveSubsystem driveSubsystem = new MecanumDriveSubsystem();
   private final IntakeSubsytem intakeSubsystem = new IntakeSubsytem();
   private final Joystick driveJoystick = new Joystick(Constants.DRIVE_JOYSTICK_USB_ID);
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-  private final ColorWheelSubsystem colorWheelSubsystem = new ColorWheelSubsystem();
+  //private final ColorWheelSubsystem colorWheelSubsystem = new ColorWheelSubsystem();
   private final XboxController driveController = new XboxController(Constants.XBOX_CONTROLLER_USB_ID);
-  private final RightActuatorSubsystem rightActuatorSubsystem = new RightActuatorSubsystem();
-  private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem(); 
+  //private final RightActuatorSubsystem rightActuatorSubsystem = new RightActuatorSubsystem();
+  //private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem(); 
   private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem(); 
+  //private final InvertIntakeSubsystem invertIntakeSubsystem = new InvertIntakeSubsystem(); 
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -72,17 +76,23 @@ public class RobotContainer {
     shooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true));
     shooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false));
 
-    JoystickButton leftActuatorButton = new JoystickButton(driveController, Constants.LEFT_ACTUATOR_BUTTON);
-    leftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true));
-    leftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false));
+   // JoystickButton leftActuatorButton = new JoystickButton(driveController, Constants.LEFT_ACTUATOR_BUTTON);
+    //leftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true));
+    //leftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false));
 
-    JoystickButton rightActuatorButton = new JoystickButton(driveController, Constants.RIGHT_ACTUATOR_BUTTON);
-    rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true));
-    rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false));
+    //JoystickButton rightActuatorButton = new JoystickButton(driveController, Constants.RIGHT_ACTUATOR_BUTTON);
+    //rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true));
+    //rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false));
 
-    JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.COLOR_WHEEL_BUTTON);
-    colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
-    colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false)); 
+    //JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.COLOR_WHEEL_BUTTON);
+    //colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
+    //colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false)); 
+    
+    //JoystickButton invertIntakeButton = new JoystickButton(driveController, Constants.INVERT_INTAKE_BUTTON);
+    //invertIntakeButton.whileHeld(new InvertIntakeCommand(invertIntakeSubsystem, true)); 
+    //invertIntakeButton.whenReleased(new InvertIntakeCommand(invertIntakeSubsystem, false)); 
+
+
   }
   
   /**
