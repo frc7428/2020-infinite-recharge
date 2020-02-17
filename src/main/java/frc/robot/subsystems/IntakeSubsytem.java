@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -23,7 +24,11 @@ public class IntakeSubsytem extends SubsystemBase {
   }
 
   public void intake(boolean on) {
-    intake.set(on ? 1 : 0);
+    double speed = SmartDashboard.getNumber("Intake", 1);
+    if (speed > 1) speed = 1; 
+    else if (speed < -1) speed = 1;
+
+    intake.set(on ? speed : 0);
   }
 
   @Override

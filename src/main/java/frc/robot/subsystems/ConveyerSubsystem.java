@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -19,10 +20,23 @@ public class ConveyerSubsystem extends SubsystemBase {
    */
   public ConveyerSubsystem() {
     conveyer.setInverted(true);
+    SmartDashboard.putNumber("Conveyor", 1);
   }
 
   public void convey(boolean on) {
-    conveyer.set(on ? 1 : 0);
+    double speed = SmartDashboard.getNumber("Conveyor", 1);
+    if (speed > 1) speed =1;
+    else if (speed < -1) speed = 1; 
+    conveyer.set(on ? speed : 0);
+    
+  }
+  public void invertedConvey(boolean up) {
+    double invertedSpeed = SmartDashboard.getNumber("InvertedConveyor", 1);
+    if (invertedSpeed > 1) invertedSpeed = 1;
+    else if (invertedSpeed < -1) invertedSpeed = 1; 
+    conveyer.set(up ? invertedSpeed : 0);
+    
+
   }
 
   @Override
