@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.actuators.LeftActuatorCommand;
 import frc.robot.commands.actuators.RightActuatorCommand;
-import frc.robot.commands.colorwheel.ColorWheelCommand;
+import frc.robot.commands.colorwheel.colorWheelCommand;
 import frc.robot.commands.conveyer.ConveyerCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
@@ -42,8 +42,8 @@ public class RobotContainer {
   private final ColorWheelSubsystem colorWheelSubsystem = new ColorWheelSubsystem();
   private final XboxController driveController = new XboxController(Constants.XBOX_CONTROLLER_USB_ID);
   private final RightActuatorSubsystem rightActuatorSubsystem = new RightActuatorSubsystem();
-  private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem(); 
-  private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem(); 
+  private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem();
+  private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -53,6 +53,7 @@ public class RobotContainer {
     configureButtonBindings();
     driveSubsystem.setDefaultCommand(new DriveCommand(driveSubsystem, driveJoystick));
   }
+
   /**
    * Use this method to define your button->command mappings. Buttons can be
    * created by instantiating a {@link GenericHID} or one of its subclasses
@@ -60,9 +61,9 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON); 
-    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true)); 
-    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false)); 
+    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON);
+    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true));
+    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false));
 
     JoystickButton conveyerButton = new JoystickButton(driveController, Constants.CONVEYER_BUTTON);
     conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true));
@@ -80,9 +81,9 @@ public class RobotContainer {
     rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true));
     rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false));
 
-    JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.COLOR_WHEEL_BUTTON);
-    colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
-    colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false)); 
+    JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.CONVEYER_BUTTON);
+    colorWheelButton.whileHeld(new colorWheelCommand(colorWheelSubsystem, true));
+    colorWheelButton.whenReleased(new colorWheelCommand(colorWheelSubsystem, false));
   }
   
   /**

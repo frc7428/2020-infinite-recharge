@@ -5,23 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.colorwheel;
+package frc.robot.commands.conveyer;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class colorWheelCommand extends CommandBase {
-  private final ColorWheelSubsystem mColorWheel;
-  private final boolean mOn;
-
+public class InvertedConveyerCommand extends CommandBase {
   /**
-   *
-   * Creates a new colorWheelCommand.
+   * Creates a new InvertedConveyerCommand.
    */
-  public colorWheelCommand(ColorWheelSubsystem colorWheel, boolean on) {
-    mColorWheel = colorWheel;
-    mOn = on;
-    addRequirements(mColorWheel);
+  public InvertedConveyerCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -33,7 +25,6 @@ public class colorWheelCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mColorWheel.colorWheel(mOn);
   }
 
   // Called once the command ends or is interrupted.
@@ -44,6 +35,6 @@ public class colorWheelCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true; 
+    return false;
   }
 }
