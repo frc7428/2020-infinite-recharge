@@ -10,15 +10,14 @@ package frc.robot.commands.colorwheel;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class colorWheelCommand extends CommandBase {
+public class ColorWheelCommand extends CommandBase {
   private final ColorWheelSubsystem mColorWheel;
-  private final boolean mOn;
-
+  private final boolean mOn; 
   /**
    *
    * Creates a new colorWheelCommand.
    */
-  public colorWheelCommand(ColorWheelSubsystem colorWheel, boolean on) {
+  public ColorWheelCommand(ColorWheelSubsystem colorWheel, boolean on) {
     mColorWheel = colorWheel;
     mOn = on;
     addRequirements(mColorWheel);
