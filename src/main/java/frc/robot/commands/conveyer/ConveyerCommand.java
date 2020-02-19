@@ -13,17 +13,22 @@ import frc.robot.subsystems.ConveyerSubsystem;
 public class ConveyerCommand extends CommandBase {
   private final ConveyerSubsystem mConveyer;
   private final boolean mOn;
+  private final boolean mUp;
+
   /**
    * Creates a new ConveyerCommand.
    */
-  public ConveyerCommand(ConveyerSubsystem conveyer, boolean on) {
+  public ConveyerCommand(ConveyerSubsystem conveyer, boolean on, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
     mConveyer = conveyer;
     mOn = on;
+    mUp = up; 
     addRequirements(mConveyer);
   }
 
-  // Called when the command is initially scheduled.
+
+
+// Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
@@ -31,7 +36,7 @@ public class ConveyerCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mConveyer.convey(mOn);
+    mConveyer.convey(mOn, mUp);
   }
 
   // Called once the command ends or is interrupted.
