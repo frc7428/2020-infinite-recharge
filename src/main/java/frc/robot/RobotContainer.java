@@ -63,8 +63,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON); 
-    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true)); 
-    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false)); 
+    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true)); 
+    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true)); 
+
+    JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.INVERTED_INTAKE_BUTTON);
+    invertedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false));
+    invertedIntakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, false)); 
 
     JoystickButton conveyerButton = new JoystickButton(driveController, Constants.CONVEYER_BUTTON);
     conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, true)); 

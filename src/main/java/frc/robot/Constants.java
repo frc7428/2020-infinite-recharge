@@ -32,7 +32,8 @@ public final class Constants {
     public static final int DRIVE_JOYSTICK_USB_ID = 0;
     public static final int XBOX_CONTROLLER_USB_ID = 1;
     
-    public static final int INTAKE_BUTTON = 2;
+    public static final int INTAKE_BUTTON = 2; 
+    public static final int INVERTED_INTAKE_BUTTON = 1; 
     public static final int CONVEYER_BUTTON = XboxController.Button.kX.value; 
     public static final int INVERTED_CONVEYER_BUTTON = XboxController.Button.kA.value;
 
