@@ -62,9 +62,13 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON); 
-    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true)); 
-    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false)); 
+    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON);
+    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true));
+    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true));
+
+    JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.INVERTED_INTAKE_BUTTON);
+    invertedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false));
+    invertedIntakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, false));
 
     JoystickButton conveyerButton = new JoystickButton(driveController, Constants.CONVEYER_BUTTON);
     conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, true)); 
@@ -90,11 +94,7 @@ public class RobotContainer {
     colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
     colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false)); 
  
-    //JoystickButton invertedConveyerButton = new JoystickButton(driveController, Constants.INVERTED_CONVEYER_BUTTON);
-   //invertedConveyerButton.whileHeld(new InvertedConveyerCommand(conveyerSubsystem, true));
-   // invertedConveyerButton.whenReleased(new InvertedConveyerCommand(conveyerSubsystem, false));
-  }
-  
+  }  
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *

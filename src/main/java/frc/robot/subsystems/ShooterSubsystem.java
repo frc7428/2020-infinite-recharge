@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -25,11 +26,15 @@ public class ShooterSubsystem extends SubsystemBase {
     CANSparkMax pewLeft = new CANSparkMax(Constants.PEW_LEFT_CAN_ID, MotorType.kBrushless);
     CANSparkMax pewRight = new CANSparkMax(Constants.PEW_RIGHT_CAN_ID, MotorType.kBrushless);
     pewLeft.setInverted(true);
+    SmartDashboard.putNumber("Shooter", 0); 
 
     pew = new SpeedControllerGroup(pewLeft, pewRight);
   }
   public void shooter(boolean on) {
-    pew.set(on ? 1 : 0); 
+    double speed = SmartDashboard.getNumber("Shooter", 1);
+    if (speed > 1) speed = 1;
+    else if (speed < -1) speed = -1;
+    pew.set(on ? speed : 0); 
     
   }
 

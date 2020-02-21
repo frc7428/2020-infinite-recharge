@@ -22,10 +22,11 @@ public class IntakeSubsytem extends SubsystemBase {
   public IntakeSubsytem() {
   }
 
-  public void intake(boolean on) {
+  public void intake(boolean on, boolean up) {
     double speed = SmartDashboard.getNumber("Intake", 1);
     if (speed > 1) speed = 1;
     else if (speed < -1) speed = -1;
+    intake.setInverted(up);
     intake.set(on ? speed : 0);
   }
 
