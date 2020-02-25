@@ -11,17 +11,19 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ColorWheelSubsystem;
 
 public class ColorWheelCommand extends CommandBase {
-  private final ColorWheelSubsystem mColorWheel;
-  private final boolean mOn; 
+  private final ColorWheelSubsystem mcolorWheel;
+  private final boolean mOn;
+  private final boolean mOut;
+
   /**
-   *
-   * Creates a new colorWheelCommand.
+   * Creates a new ColorWheelCommand.
    */
-  public ColorWheelCommand(ColorWheelSubsystem colorWheel, boolean on) {
-    mColorWheel = colorWheel;
-    mOn = on;
-    addRequirements(mColorWheel);
+  public ColorWheelCommand(ColorWheelSubsystem spinner, boolean on, boolean out) {
     // Use addRequirements() here to declare subsystem dependencies.
+    mcolorWheel = spinner;
+    mOn = on;
+    mOut = out;
+    addRequirements(mcolorWheel);
   }
 
   // Called when the command is initially scheduled.
@@ -32,7 +34,7 @@ public class ColorWheelCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mColorWheel.colorWheel(mOn);
+    mcolorWheel.spinner(mOn, mOut);
   }
 
   // Called once the command ends or is interrupted.
@@ -43,6 +45,6 @@ public class ColorWheelCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true; 
+    return false;
   }
 }

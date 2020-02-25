@@ -5,24 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.actuators;
+package frc.robot.commands.colorwheel;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.RightActuatorSubsystem;
+import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class RightActuatorCommand extends CommandBase {
-  private final RightActuatorSubsystem mActuator;
+public class PneumaticsCommand extends CommandBase {
+  private final ColorWheelSubsystem mPositioner;
   private final boolean mOn;
-
+  private final boolean mDown;
   /**
-   * Creates a new ActuatorsCommand.
+   * Creates a new PneumaticsCommand.
    */
-  public RightActuatorCommand(RightActuatorSubsystem actuator, boolean on) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    mActuator = actuator;
-    mOn = on; 
-    addRequirements(mActuator);
-
+  public PneumaticsCommand(ColorWheelSubsystem positioner, boolean on, boolean down) {
+    mPositioner = positioner;
+    mOn = on;
+    mDown = down;
   }
 
   // Called when the command is initially scheduled.
@@ -33,7 +31,7 @@ public class RightActuatorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mActuator.actuate(mOn); 
+    mPositioner.positioner(mOn, mDown);
   }
 
   // Called once the command ends or is interrupted.
@@ -44,6 +42,6 @@ public class RightActuatorCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

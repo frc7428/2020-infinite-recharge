@@ -8,20 +8,39 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.revrobotics.ColorSensorV3;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class ColorWheelSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX Wheel = new WPI_VictorSPX(Constants.COLOR_WHEEL_CAN_ID);
+  private final WPI_VictorSPX spinner = new WPI_VictorSPX(Constants.CAN_ID.COLOR_WHEEL_CAN_ID);
+  private final ColorSensorV3 sensor = new ColorSensorV3(Port.kOnboard);
+  private final DoubleSolenoid positioner = new DoubleSolenoid(Constants.PCM_ID.COLOR_WHEEL_UP, Constants.PCM_ID.COLOR_WHEEL_DOWN);
+  protected final static int CMD = 0x80;
+  protected final static int MULTI_BYTE_BIT = 0x20;
+
+  
   /**
    * Creates a new ColorWheelSubsystem.
    */
   public ColorWheelSubsystem() {
+    spinner.setInverted(true);
+    positioner.set(Value.kForward);
+    sensor.getRawColor();
   }
 
-  public void colorWheel(boolean colorWheel) {
-    Wheel.set(colorWheel ? 1 : 0);
+  public void positioner(boolean on, boolean down) {
+    positioner.set(on ? Value.kForward : Value.kReverse); 
+  }
+
+  public void spinner(boolean on, boolean out) {
+    spinner.set(on ? Constants.SPEEDS.COLORWHEEL : 0);
   }
 
   @Override

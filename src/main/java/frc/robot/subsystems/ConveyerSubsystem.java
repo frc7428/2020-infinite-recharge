@@ -9,26 +9,21 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ConveyerSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.CONVEYER_CAN_ID);
+  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.CAN_ID.CONVEYER_CAN_ID);
   /**
    * Creates a new ConveyerSubsystem.
    */
   public ConveyerSubsystem() {
-    SmartDashboard.putNumber("Conveyer", 0);
     
   }
 
   public void convey(boolean on, boolean up) {
-    double speed = SmartDashboard.getNumber("Conveyer", 1);
-    if (speed > 1) speed = 1; 
-    else if (speed < -1) speed = -1;
     conveyer.setInverted(up);
-    conveyer.set(on ? speed : 0);
+    conveyer.set(on ? Constants.SPEEDS.CONVEYER : 0);
 
   }
 

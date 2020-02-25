@@ -15,10 +15,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class MecanumDriveSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX frontLeft = new WPI_VictorSPX(Constants.FRONT_LEFT_CAN_ID);
-  private final WPI_VictorSPX frontRight = new WPI_VictorSPX(Constants.FRONT_RIGHT_CAN_ID);
-  private final WPI_VictorSPX rearLeft = new WPI_VictorSPX(Constants.REAR_LEFT_CAN_ID);
-  private final WPI_VictorSPX rearRight = new WPI_VictorSPX(Constants.REAR_RIGHT_CAN_ID);
+  private final WPI_VictorSPX frontLeft = new WPI_VictorSPX(Constants.CAN_ID.FRONT_LEFT_CAN_ID);
+  private final WPI_VictorSPX frontRight = new WPI_VictorSPX(Constants.CAN_ID.FRONT_RIGHT_CAN_ID);
+  private final WPI_VictorSPX rearLeft = new WPI_VictorSPX(Constants.CAN_ID.REAR_LEFT_CAN_ID);
+  private final WPI_VictorSPX rearRight = new WPI_VictorSPX(Constants.CAN_ID.REAR_RIGHT_CAN_ID);
   private final MecanumDrive drive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
   /**

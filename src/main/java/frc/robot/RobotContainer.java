@@ -11,22 +11,17 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-//import frc.robot.commands.actuators.LeftActuatorCommand;
-//import frc.robot.commands.actuators.RightActuatorCommand;
-import frc.robot.commands.colorwheel.ColorWheelCommand;
-//import frc.robot.commands.colorwheel.ColorWheelCommand;
 import frc.robot.commands.conveyer.ConveyerCommand;
-//import frc.robot.commands.conveyer.InvertedConveyerCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
 import frc.robot.commands.shooter.ShooterCommand;
 import frc.robot.subsystems.ColorWheelSubsystem;
 import frc.robot.subsystems.ConveyerSubsystem;
 import frc.robot.subsystems.IntakeSubsytem;
-// import frc.robot.subsystems.LeftActuatorSubsystem;
 import frc.robot.subsystems.MecanumDriveSubsystem;
-// import frc.robot.subsystems.RightActuatorSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.commands.colorwheel.ColorWheelCommand;
+import frc.robot.commands.colorwheel.PneumaticsCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -39,13 +34,13 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final MecanumDriveSubsystem driveSubsystem = new MecanumDriveSubsystem();
   private final IntakeSubsytem intakeSubsystem = new IntakeSubsytem();
-  private final Joystick driveJoystick = new Joystick(Constants.DRIVE_JOYSTICK_USB_ID);
+  private final Joystick driveJoystick = new Joystick(Constants.USB_ID.DRIVE_JOYSTICK_USB_ID);
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-  private final ColorWheelSubsystem colorWheelSubsystem = new ColorWheelSubsystem();
-  private final XboxController driveController = new XboxController(Constants.XBOX_CONTROLLER_USB_ID);
+  private final XboxController driveController = new XboxController(Constants.USB_ID.XBOX_CONTROLLER_USB_ID);
   //private final RightActuatorSubsystem rightActuatorSubsystem = new RightActuatorSubsystem();
   //private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem(); 
   private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem(); 
+  private final ColorWheelSubsystem ColorWheelSubsystem = new ColorWheelSubsystem(); 
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -62,41 +57,42 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON); 
-    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true)); 
-    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true)); 
+    final JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.BUTTON_ID.INTAKE_BUTTON); 
+    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false)); 
+    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, false)); 
 
-    JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.INVERTED_INTAKE_BUTTON);
-    invertedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false));
-    invertedIntakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, false)); 
+    final JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.BUTTON_ID.INVERTED_INTAKE_BUTTON);
+    invertedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true));
+    invertedIntakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true)); 
 
-    JoystickButton conveyerButton = new JoystickButton(driveController, Constants.CONVEYER_BUTTON);
+    final JoystickButton conveyerButton = new JoystickButton(driveController, Constants.BUTTON_ID.CONVEYER_BUTTON);
     conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, true)); 
     conveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, true));
 
-    JoystickButton invertedConveyerButton = new JoystickButton(driveController, Constants.INVERTED_CONVEYER_BUTTON);
+    final JoystickButton invertedConveyerButton = new JoystickButton(driveController, Constants.BUTTON_ID.INVERTED_CONVEYER_BUTTON);
     invertedConveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, false));
     invertedConveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, false));
 
-    JoystickButton shooterButton = new JoystickButton(driveController, Constants.SHOOTER_BUTTON);
-    shooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true));
-    shooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false));
+    final JoystickButton shooterButton = new JoystickButton(driveController, Constants.BUTTON_ID.INVERTED_SHOOTER_BUTTON);
+    shooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true, true));
+    shooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false, true));
 
-   // JoystickButton leftActuatorButton = new JoystickButton(driveController, Constants.LEFT_ACTUATOR_BUTTON);
-   // leftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true));
-   // leftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false));
+    final JoystickButton invertedShooterButton = new JoystickButton(driveController, Constants.BUTTON_ID.SHOOTER_BUTTON);
+    invertedShooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true, false));
+    invertedShooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false, false));
 
-   // JoystickButton rightActuatorButton = new JoystickButton(driveController, Constants.RIGHT_ACTUATOR_BUTTON);
-   // rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true));
-   // rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false));
+    final JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.BUTTON_ID.COLOR_WHEEL_BUTTON);
+    colorWheelButton.whileHeld(new ColorWheelCommand(ColorWheelSubsystem, true, false));
+    colorWheelButton.whenReleased(new ColorWheelCommand(ColorWheelSubsystem, false, false));
 
-    JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.COLOR_WHEEL_BUTTON);
-    colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
-    colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false)); 
- 
-    //JoystickButton invertedConveyerButton = new JoystickButton(driveController, Constants.INVERTED_CONVEYER_BUTTON);
-   //invertedConveyerButton.whileHeld(new InvertedConveyerCommand(conveyerSubsystem, true));
-   // invertedConveyerButton.whenReleased(new InvertedConveyerCommand(conveyerSubsystem, false));
+    final JoystickButton pneumaticsUpButton = new JoystickButton(driveController, Constants.BUTTON_ID.PNEUMATIC_UP_BUTTON);
+    pneumaticsUpButton.whileHeld(new PneumaticsCommand(ColorWheelSubsystem, true, false));
+    pneumaticsUpButton.whenReleased(new PneumaticsCommand(ColorWheelSubsystem, false, false));
+
+    final JoystickButton pneumaticsDownButton = new JoystickButton(driveController, Constants.BUTTON_ID.PNEUMATIC_DOWN_BUTTON);
+    pneumaticsDownButton.whileHeld(new PneumaticsCommand(ColorWheelSubsystem, true, true));
+    pneumaticsDownButton.whenReleased(new PneumaticsCommand(ColorWheelSubsystem, false, true));
+
   }
   
   /**
