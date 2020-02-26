@@ -11,14 +11,12 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-
 
 public class ColorWheelSubsystem extends SubsystemBase {
   private final WPI_VictorSPX spinner = new WPI_VictorSPX(Constants.CAN_ID.COLOR_WHEEL_CAN_ID);
