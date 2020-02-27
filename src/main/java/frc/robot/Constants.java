@@ -52,7 +52,6 @@ public final class Constants {
         public static final int INVERTED_SHOOTER_BUTTON = XboxController.Button.kStart.value;
         public static final int SHOOTER_BUTTON = XboxController.Button.kX.value; 
     
-        public static final int LEFT_ACTUATOR_BUTTON = XboxController.Button.kBumperLeft.value;
 
         public static final int PNEUMATIC_UP_BUTTON = XboxController.Button.kBumperLeft.value;
         public static final int PNEUMATIC_DOWN_BUTTON = XboxController.Button.kBumperRight.value;

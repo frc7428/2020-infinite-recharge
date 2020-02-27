@@ -5,12 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.colorwheel;
+package frc.robot.commands.colorWheel;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class ColorWheelCommand extends CommandBase {
+public class colorWheelCommand extends CommandBase {
   private final ColorWheelSubsystem mcolorWheel;
   private final boolean mOn;
   private final boolean mOut;
@@ -18,7 +18,7 @@ public class ColorWheelCommand extends CommandBase {
   /**
    * Creates a new ColorWheelCommand.
    */
-  public ColorWheelCommand(ColorWheelSubsystem spinner, boolean on, boolean out) {
+  public colorWheelCommand(ColorWheelSubsystem spinner, boolean on, boolean out) {
     // Use addRequirements() here to declare subsystem dependencies.
     mcolorWheel = spinner;
     mOn = on;

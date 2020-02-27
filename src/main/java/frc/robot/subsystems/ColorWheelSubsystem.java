@@ -15,8 +15,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+
 
 public class ColorWheelSubsystem extends SubsystemBase {
   private final WPI_VictorSPX spinner = new WPI_VictorSPX(Constants.CAN_ID.COLOR_WHEEL_CAN_ID);
@@ -35,7 +34,7 @@ public class ColorWheelSubsystem extends SubsystemBase {
     sensor.getRawColor();
   }
 
-  public void positioner(boolean on, boolean down) {
+  public void positioner(boolean on) {
     positioner.set(on ? Value.kForward : Value.kReverse); 
   }
 
