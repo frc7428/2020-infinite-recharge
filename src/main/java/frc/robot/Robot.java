@@ -10,7 +10,15 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import jdk.nashorn.internal.runtime.regexp.joni.Matcher;
 
+import com.revrobotics.ColorMatch;
+import com.revrobotics.ColorMatchResult;
+import com.revrobotics.ColorSensorV3;
+
+import edu.wpi.first.wpilibj.I2C; 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; 
+import edu.wpi.first.wpilibj.util.Color;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -18,35 +26,29 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
+ private final I2C.Port i2cPort = I2C.Port.kOnboard;
+private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+private final ColorMatch m_colorMatch = new ColorMatch();
 
-  private RobotContainer m_robotContainer;
+private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
+private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
+private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
-  /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
-   */
-  @Override
-  public void robotInit() {
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
-    // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
-  }
-
-  /**
-   * This function is called every robot packet, no matter the mode. Use this for items like
-   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
-   */
+@Override
+public void robotInit() {
+  m_colorMatch.addColorMatch(kBlueTarget);
+  m_colorMatch.addColorMatch(kGreenTarget);
+  m_colorMatch.addColorMatch(kRedTarget);
+  m_colorMatch.addColorMatch(kYellowTarget);
+}
   @Override
   public void robotPeriodic() {
-    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
-    // commands, running already-scheduled commands, removing finished or interrupted commands,
-    // and running subsystem periodic() methods.  This must be called from the robot's periodic
-    // block in order for anything in the Command-based framework to work.
-    CommandScheduler.getInstance().run();
+Color detectedColor = m_colorSensor.getColor();
+
+String colorString; 
+ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+
   }
 
   /**
