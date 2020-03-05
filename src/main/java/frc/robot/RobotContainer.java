@@ -94,10 +94,10 @@ public class RobotContainer {
 
     final JoystickButton pneumaticsUpButton = new JoystickButton(driveController, Constants.BUTTON_ID.PNEUMATIC_UP_BUTTON);
     pneumaticsUpButton.whenReleased(new PneumaticsCommand(ColorWheelSubsystem, true));
-
+    //pneumaticsUpButton.whileHeld(new PneumaticsCommand(ColorWheelSubsystem, false));
     final JoystickButton pneumaticsDownButton = new JoystickButton(driveController, Constants.BUTTON_ID.PNEUMATIC_DOWN_BUTTON);
     pneumaticsDownButton.whenReleased(new PneumaticsCommand(ColorWheelSubsystem, false));
-    //pneumaticsDownButton.whileHeld(new PneumaticsCommand(ColorWheelSubsystem, false, false));
+    //pneumaticsDownButton.whileHeld(new PneumaticsCommand(ColorWheelSubsystem, false));
 
   }
   

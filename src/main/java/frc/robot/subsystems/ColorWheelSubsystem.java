@@ -21,9 +21,6 @@ public class ColorWheelSubsystem extends SubsystemBase {
   private final WPI_VictorSPX spinner = new WPI_VictorSPX(Constants.CAN_ID.COLOR_WHEEL_CAN_ID);
   private final ColorSensorV3 sensor = new ColorSensorV3(Port.kOnboard);
   private final DoubleSolenoid positioner = new DoubleSolenoid(Constants.PCM_ID.COLOR_WHEEL_UP, Constants.PCM_ID.COLOR_WHEEL_DOWN);
-  protected final static int CMD = 0x80;
-  protected final static int MULTI_BYTE_BIT = 0x20;
-
   
   /**
    * Creates a new ColorWheelSubsystem.
