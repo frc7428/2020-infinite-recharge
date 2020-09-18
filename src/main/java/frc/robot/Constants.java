@@ -18,26 +18,31 @@ import edu.wpi.first.wpilibj.XboxController;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final int FRONT_LEFT_CAN_ID = 0;
-    public static final int FRONT_RIGHT_CAN_ID = 2;
-    public static final int REAR_LEFT_CAN_ID = 1;
-    public static final int REAR_RIGHT_CAN_ID = 3;
+    public static final int FRONT_LEFT_CAN_ID = 5;
+    public static final int FRONT_RIGHT_CAN_ID = 6;
+    public static final int REAR_LEFT_CAN_ID = 3;
+    public static final int REAR_RIGHT_CAN_ID = 4;
     public static final int INTAKE_CAN_ID = 4;
-    public static final int CONVEYER_CAN_ID = 5;
+    public static final int CONVEYER_CAN_ID = 7;
     public static final int COLOR_WHEEL_CAN_ID = 6;
-    public static final int RIGHT_ACTUATOR_CAN_ID = 9;
-    public static final int LEFT_ACTUATOR_CAN_ID = 10;
+    public static final int RIGHT_ACTUATOR_CAN_ID = 5;
+    public static final int LEFT_ACTUATOR_CAN_ID = 8;
     public static final int PEW_LEFT_CAN_ID = 1; 
     public static final int PEW_RIGHT_CAN_ID = 2; 
     public static final int DRIVE_JOYSTICK_USB_ID = 0;
     public static final int XBOX_CONTROLLER_USB_ID = 1;
     
     public static final int INTAKE_BUTTON = 2;
+    public static final int INVERTED_INTAKE_BUTTON = 7;
     public static final int CONVEYER_BUTTON = XboxController.Button.kX.value; 
+    public static final int INVERTED_CONVEYER_BUTTON = XboxController.Button.kA.value;
 
     public static final int COLOR_WHEEL_BUTTON = XboxController.Button.kB.value;
     public static final int SHOOTER_BUTTON = XboxController.Button.kY.value;
+    public static final int INVERTED_SHOOTER_BUTTON = XboxController.Button.kStart.value;
 
     public static final int RIGHT_ACTUATOR_BUTTON = XboxController.Button.kBumperRight.value;
     public static final int LEFT_ACTUATOR_BUTTON = XboxController.Button.kBumperLeft.value;
+    public static final int INVERTED_RIGHT_ACTUATOR_BUTTON = 9;
+    public static final int INVERTED_LEFT_ACTUATOR_BUTTON = 10;
 }

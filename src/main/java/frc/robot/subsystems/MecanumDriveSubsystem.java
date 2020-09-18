@@ -7,18 +7,20 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class MecanumDriveSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX frontLeft = new WPI_VictorSPX(Constants.FRONT_LEFT_CAN_ID);
-  private final WPI_VictorSPX frontRight = new WPI_VictorSPX(Constants.FRONT_RIGHT_CAN_ID);
-  private final WPI_VictorSPX rearLeft = new WPI_VictorSPX(Constants.REAR_LEFT_CAN_ID);
-  private final WPI_VictorSPX rearRight = new WPI_VictorSPX(Constants.REAR_RIGHT_CAN_ID);
+  private final SpeedController frontLeft = new CANSparkMax(Constants.FRONT_LEFT_CAN_ID, MotorType.kBrushless);
+  private final SpeedController frontRight = new CANSparkMax(Constants.FRONT_RIGHT_CAN_ID, MotorType.kBrushless);
+  private final SpeedController rearLeft = new CANSparkMax(Constants.REAR_LEFT_CAN_ID, MotorType.kBrushless);
+  private final SpeedController rearRight = new CANSparkMax(Constants.REAR_RIGHT_CAN_ID, MotorType.kBrushless);
   private final MecanumDrive drive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
   /**
@@ -27,7 +29,7 @@ public class MecanumDriveSubsystem extends SubsystemBase {
   public MecanumDriveSubsystem() {
 
   }
-
+ 
   public void drive(double forward, double right, double clockwise) {
     double scaledRight = Math.pow(right, 3);
     double scaledForward = Math.pow(forward, 3);

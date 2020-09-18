@@ -17,9 +17,18 @@ public class RightActuatorSubsystem extends SubsystemBase {
    * Creates a new ActuatorsSubsystem.
    */
   public RightActuatorSubsystem() {
+    rightActuator.setInverted(true);
   }
-  public void actuate(boolean on) {
-    rightActuator.set(on ? 1 : 0);  
+  public void actuate(boolean on, boolean up) {
+    if (on) {
+      if (up){
+        rightActuator.set(1);
+      } else {
+        rightActuator.set(-1);
+      }
+    } else {
+      rightActuator.set(0);
+    }
   }
   @Override
   public void periodic() {

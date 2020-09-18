@@ -22,8 +22,16 @@ public class IntakeSubsytem extends SubsystemBase {
   public IntakeSubsytem() {
   }
 
-  public void intake(boolean on) {
-    intake.set(on ? 1 : 0);
+  public void intake(boolean on, boolean up) {
+    if (on) {
+      if (up) {
+        intake.set(1);
+      } else {
+        intake.set(-1);
+      }
+    } else {
+      intake.set(0);
+    }
   }
 
   @Override

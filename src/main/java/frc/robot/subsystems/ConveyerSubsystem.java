@@ -18,11 +18,20 @@ public class ConveyerSubsystem extends SubsystemBase {
    * Creates a new ConveyerSubsystem.
    */
   public ConveyerSubsystem() {
-    conveyer.setInverted(true);
   }
 
-  public void convey(boolean on) {
-    conveyer.set(on ? 1 : 0);
+  public void convey(boolean on, boolean up) {
+    if (on) {
+      // What to do when the conveyer is ON?
+      if (up) {
+        conveyer.set(1);
+      } else {
+        conveyer.set(-1);
+      }
+    } else {
+      // What to do when the conveyer is OFF?
+      conveyer.set(0);
+    }
   }
 
   @Override

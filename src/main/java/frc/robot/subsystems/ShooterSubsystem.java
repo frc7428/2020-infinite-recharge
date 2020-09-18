@@ -15,8 +15,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ShooterSubsystem extends SubsystemBase {
-  private final SpeedControllerGroup pew; 
-  
+  private final SpeedControllerGroup pew;
 
   /**
    * Creates a new ShooterSubsystem.
@@ -28,9 +27,17 @@ public class ShooterSubsystem extends SubsystemBase {
 
     pew = new SpeedControllerGroup(pewLeft, pewRight);
   }
-  public void shooter(boolean on) {
-    pew.set(on ? 1 : 0); 
-    
+
+  public void shooter(boolean on, boolean up) {
+    if (on) {
+      if (up) {
+        pew.set(1);
+      } else {
+        pew.set(-1);
+      }
+    } else {
+      pew.set(0);
+    }
   }
 
   @Override

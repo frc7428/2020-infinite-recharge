@@ -13,14 +13,16 @@ import frc.robot.subsystems.LeftActuatorSubsystem;
 public class LeftActuatorCommand extends CommandBase {
   private final LeftActuatorSubsystem mActuator;
   private final boolean mOn;
+  private final boolean mUp;
 
   /**
    * Creates a new ActuatorsCommand.
    */
-  public LeftActuatorCommand(LeftActuatorSubsystem actuator, boolean on) {
+  public LeftActuatorCommand(LeftActuatorSubsystem actuator, boolean on, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
     mActuator = actuator;
     mOn = on; 
+    mUp = up;
     addRequirements(mActuator);
 
   }
@@ -33,7 +35,7 @@ public class LeftActuatorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mActuator.actuate(mOn); 
+    mActuator.actuate(mOn, mUp); 
   }
 
   // Called once the command ends or is interrupted.

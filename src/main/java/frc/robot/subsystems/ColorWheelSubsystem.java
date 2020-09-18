@@ -18,6 +18,7 @@ public class ColorWheelSubsystem extends SubsystemBase {
    * Creates a new ColorWheelSubsystem.
    */
   public ColorWheelSubsystem() {
+    Wheel.setInverted(true);
   }
 
   public void colorWheel(boolean colorWheel) {

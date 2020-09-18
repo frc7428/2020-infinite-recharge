@@ -18,8 +18,16 @@ public class LeftActuatorSubsystem extends SubsystemBase {
    */
   public LeftActuatorSubsystem() {
   }
-  public void actuate(boolean on) {
-    leftActuator.set(on ? 1 : 0);  
+  public void actuate(boolean on, boolean up) {
+  if (on) {
+    if (up) {
+      leftActuator.set(1);
+    } else {
+      leftActuator.set(-1);
+    }
+  } else {
+    leftActuator.set(0);
+  }
   }
   @Override
   public void periodic() {

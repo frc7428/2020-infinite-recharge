@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.actuators.LeftActuatorCommand;
 import frc.robot.commands.actuators.RightActuatorCommand;
-import frc.robot.commands.colorwheel.ColorWheelCommand;
+import frc.robot.commands.colorWheel.ColorWheelCommand;
 import frc.robot.commands.conveyer.ConveyerCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
@@ -61,24 +61,44 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON); 
-    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true)); 
-    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false)); 
+    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true)); 
+    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true)); 
+
+    JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.INVERTED_INTAKE_BUTTON);
+    invertedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false));
+    invertedIntakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, false));
 
     JoystickButton conveyerButton = new JoystickButton(driveController, Constants.CONVEYER_BUTTON);
-    conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true));
-    conveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false));
+    conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, true));
+    conveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, true));
+
+    JoystickButton invertedConveyerButton = new JoystickButton(driveController, Constants.INVERTED_CONVEYER_BUTTON);
+    invertedConveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, false));
+    invertedConveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, false));
 
     JoystickButton shooterButton = new JoystickButton(driveController, Constants.SHOOTER_BUTTON);
-    shooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true));
-    shooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false));
+    shooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true, true));
+    shooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false, true));
+
+    JoystickButton invertedShooterButton = new JoystickButton(driveController, Constants.INVERTED_SHOOTER_BUTTON);
+    invertedShooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true, false));
+    invertedShooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false, false));
 
     JoystickButton leftActuatorButton = new JoystickButton(driveController, Constants.LEFT_ACTUATOR_BUTTON);
-    leftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true));
-    leftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false));
+    leftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true, true));
+    leftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false, true));
+
+    JoystickButton invertedLeftActuatorButton = new JoystickButton(driveJoystick, Constants.INVERTED_LEFT_ACTUATOR_BUTTON);
+    invertedLeftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true, false));
+    invertedLeftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false, false));
 
     JoystickButton rightActuatorButton = new JoystickButton(driveController, Constants.RIGHT_ACTUATOR_BUTTON);
-    rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true));
-    rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false));
+    rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, true));
+    rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, true));
+
+    JoystickButton invertedRightActuatorButton = new JoystickButton(driveJoystick, Constants.INVERTED_RIGHT_ACTUATOR_BUTTON);
+    invertedRightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, false));
+    invertedRightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, false));
 
     JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.COLOR_WHEEL_BUTTON);
     colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
