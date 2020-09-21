@@ -32,10 +32,9 @@ public class ColorWheelSubsystem extends SubsystemBase {
   private Color currentColor = null;
   private Color fmsColor = null;
 
-  private final WPI_VictorSPX spinner = new WPI_VictorSPX(Constants.CAN_ID.COLOR_WHEEL_CAN_ID);
+  private final WPI_VictorSPX spinner = new WPI_VictorSPX(Constants.COLOR_WHEEL_CAN_ID);
   private final ColorSensorV3 sensor = new ColorSensorV3(Port.kOnboard);
-  private final DoubleSolenoid positioner = new DoubleSolenoid(Constants.PCM_ID.COLOR_WHEEL_UP,
-      Constants.PCM_ID.COLOR_WHEEL_DOWN);
+  private final DoubleSolenoid positioner = new DoubleSolenoid(Constants.COLOR_WHEEL_UP, Constants.COLOR_WHEEL_DOWN);
 
   /**
    * Creates a new ColorWheelSubsystem.
@@ -55,7 +54,7 @@ public class ColorWheelSubsystem extends SubsystemBase {
   }
 
   public void spinner(boolean on) {
-    spinner.set(on ? Constants.SPEEDS.COLORWHEEL : 0);
+    spinner.set(on ? 1 : 0);
   }
 
   public void detectColor() {

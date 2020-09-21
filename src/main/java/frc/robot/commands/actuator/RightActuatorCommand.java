@@ -10,8 +10,8 @@ package frc.robot.commands.actuator;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.RightActuatorSubsystem;
 
-public class rightActuatorCommand extends CommandBase {
-  private final RightActuatorSubsystem mRightActuate;
+public class RightActuatorCommand extends CommandBase {
+  private final RightActuatorSubsystem mActuator;
   private final boolean mOn;
   private final boolean mUp;
   /**

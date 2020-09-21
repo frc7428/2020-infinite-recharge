@@ -10,10 +10,15 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.actuators.LeftActuatorCommand;
-import frc.robot.commands.actuators.RightActuatorCommand;
-import frc.robot.commands.colorWheel.ColorWheelCommand;
+import frc.robot.commands.actuator.LeftActuatorCommand;
+import frc.robot.commands.actuator.RightActuatorCommand;
+import frc.robot.commands.colorWheel.ColorCountCommand;
+import frc.robot.commands.colorWheel.ColorMatchCommand;
+import frc.robot.commands.colorWheel.PneumaticsCommand;
+import frc.robot.commands.colorWheel.ResetCommand;
+import frc.robot.commands.colorWheel.StopColorWheel;
 import frc.robot.commands.conveyer.ConveyerCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
@@ -100,22 +105,18 @@ public class RobotContainer {
     invertedRightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, false));
     invertedRightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, false));
 
-    JoystickButton colorWheelButton = new JoystickButton(driveController, Constants.COLOR_WHEEL_BUTTON);
-    colorWheelButton.whileHeld(new ColorWheelCommand(colorWheelSubsystem, true));
-    colorWheelButton.whenReleased(new ColorWheelCommand(colorWheelSubsystem, false)); 
-
-    final JoystickButton stageOneButton = new JoystickButton(driveController, Constants.BUTTON_ID.STAGE_ONE_BUTTON);
+    final JoystickButton stageOneButton = new JoystickButton(driveController, Constants.STAGE_ONE_BUTTON);
     stageOneButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
       .andThen(new ResetCommand(colorWheelSubsystem))
       .andThen(new ColorCountCommand(colorWheelSubsystem)).andThen(new WaitCommand(0.5))
       .andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
-    final JoystickButton stageTwoButton = new JoystickButton(driveController, Constants.BUTTON_ID.STAGE_TWO_BUTTON);
+    final JoystickButton stageTwoButton = new JoystickButton(driveController, Constants.STAGE_TWO_BUTTON);
     stageTwoButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
       .andThen(new ResetCommand(colorWheelSubsystem))
       .andThen(new ColorMatchCommand(colorWheelSubsystem)).andThen(new WaitCommand(0.5))
       .andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 
-    final JoystickButton stopColorWheel = new JoystickButton(driveController, Constants.BUTTON_ID.STOP_COLOR_WHEEL);
+    final JoystickButton stopColorWheel = new JoystickButton(driveController, Constants.STOP_COLOR_WHEEL);
     stopColorWheel.whenReleased(new StopColorWheel(colorWheelSubsystem)
       .andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 

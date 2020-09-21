@@ -47,4 +47,11 @@ public final class Constants {
     public static final int LEFT_ACTUATOR_BUTTON = XboxController.Button.kBumperLeft.value;
     public static final int INVERTED_RIGHT_ACTUATOR_BUTTON = 9;
     public static final int INVERTED_LEFT_ACTUATOR_BUTTON = 10;
+
+    public static final int COLOR_WHEEL_UP = -1;
+    public static final int COLOR_WHEEL_DOWN = -1;
+
+    public static final int STAGE_ONE_BUTTON = -1;
+    public static final int STAGE_TWO_BUTTON = -1;
+    public static final int STOP_COLOR_WHEEL = -1;
 }

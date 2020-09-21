@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LeftActuatorSubsystem;
 
 public class LeftActuatorCommand extends CommandBase {
-  private final LeftActuatorSubsystem mLeftActuate;
+  private final LeftActuatorSubsystem mActuator;
   private final boolean mOn;
   private final boolean mUp;
 
