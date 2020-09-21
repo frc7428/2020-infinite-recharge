@@ -5,15 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.hook;
+package frc.robot.commands.colorWheel;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class HookCommand extends CommandBase {
+public class ColorCountCommand extends CommandBase {
+  private final ColorWheelSubsystem mcolorWheelSubsystem;
   /**
-   * Creates a new HookCommand.
+   * Creates a new ColorCountCommand.
    */
-  public HookCommand() {
+  public ColorCountCommand(ColorWheelSubsystem colorWheelSubsystem) {
+    mcolorWheelSubsystem = colorWheelSubsystem;
+    addRequirements(mcolorWheelSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -25,16 +29,18 @@ public class HookCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    mcolorWheelSubsystem.spinner(true);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    mcolorWheelSubsystem.spinner(false);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return mcolorWheelSubsystem.getColorCount() >= 28;
   }
 }

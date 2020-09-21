@@ -10,20 +10,18 @@ package frc.robot.commands.colorWheel;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class PneumaticsCommand extends CommandBase {
-  private final ColorWheelSubsystem mPositioner;
-  private final boolean mOn;
- // private final boolean mDown;
+public class ResetCommand extends CommandBase {
+  private final ColorWheelSubsystem mcolorWheelSubsystem;
   /**
-   * Creates a new PneumaticsCommand.
+   * Creates a new ResetCommand.
    */
-  public PneumaticsCommand(ColorWheelSubsystem positioner, boolean on) {
-    mPositioner = positioner;
-    mOn = on;
-    //mDown = down; , boolean down, mDown
+  public ResetCommand(ColorWheelSubsystem colorWheelSubsystem) {
+    mcolorWheelSubsystem = colorWheelSubsystem;
+    addRequirements(mcolorWheelSubsystem);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
-// Called when the command is initially scheduled.
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
@@ -31,7 +29,7 @@ public class PneumaticsCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mPositioner.positioner(mOn);
+    mcolorWheelSubsystem.reset();
   }
 
   // Called once the command ends or is interrupted.

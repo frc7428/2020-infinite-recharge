@@ -5,15 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot.commands.actuator;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.LeftActuatorSubsystem;
 
-public class HookSubsystem extends CommandBase {
+public class leftActuatorCommand extends CommandBase {
+  private final LeftActuatorSubsystem mLeftActuate;
+  private final boolean mOn;
+  private final boolean mUp; 
   /**
-   * Creates a new HookSubsystem.
+   * Creates a new leftActuatorCommand.
    */
-  public HookSubsystem() {
+  public leftActuatorCommand(LeftActuatorSubsystem actuate, boolean on, boolean up) {
+   mLeftActuate = actuate;
+   mOn = on;
+   mUp = up;
+   addRequirements(mLeftActuate);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -25,6 +33,7 @@ public class HookSubsystem extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    mLeftActuate.actuate(mOn, mUp);
   }
 
   // Called once the command ends or is interrupted.
@@ -35,6 +44,6 @@ public class HookSubsystem extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

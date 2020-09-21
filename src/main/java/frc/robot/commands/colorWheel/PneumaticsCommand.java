@@ -5,28 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.shooter;
+package frc.robot.commands.colorWheel;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.ColorWheelSubsystem;
 
-public class ShooterCommand extends CommandBase {
-  private final ShooterSubsystem mShooter;
+public class PneumaticsCommand extends CommandBase {
+  private final ColorWheelSubsystem mPositioner;
   private final boolean mOn;
-  private final boolean mUp;
-
+ // private final boolean mDown;
   /**
-   * Creates a new shooterCommand.
+   * Creates a new PneumaticsCommand.
    */
-  public ShooterCommand(ShooterSubsystem shooter, boolean on, boolean up) {
-    mShooter = shooter;
+  public PneumaticsCommand(ColorWheelSubsystem positioner, boolean on) {
+    mPositioner = positioner;
     mOn = on;
-    mUp = up; 
-    addRequirements(mShooter);
-    // Use addRequirements() here to declare subsystem dependencies.
+    //mDown = down; , boolean down, mDown
   }
 
-  // Called when the command is initially scheduled.
+// Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
@@ -34,7 +31,7 @@ public class ShooterCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mShooter.shooter(mOn, mUp);
+    mPositioner.positioner(mOn);
   }
 
   // Called once the command ends or is interrupted.

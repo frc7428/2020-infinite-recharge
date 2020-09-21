@@ -5,25 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.colorWheel;
+package frc.robot.commands.actuator;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ColorWheelSubsystem;
+import frc.robot.subsystems.RightActuatorSubsystem;
 
-public class colorWheelCommand extends CommandBase {
-  private final ColorWheelSubsystem mcolorWheel;
+public class rightActuatorCommand extends CommandBase {
+  private final RightActuatorSubsystem mRightActuate;
   private final boolean mOn;
-  private final boolean mOut;
-
+  private final boolean mUp;
   /**
-   * Creates a new ColorWheelCommand.
+   * Creates a new rightActuatorCommand.
    */
-  public colorWheelCommand(ColorWheelSubsystem spinner, boolean on, boolean out) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    mcolorWheel = spinner;
+  public rightActuatorCommand(RightActuatorSubsystem actuate, boolean on, boolean up) {
+    mRightActuate = actuate;
     mOn = on;
-    mOut = out;
-    addRequirements(mcolorWheel);
+    mUp = up;
+    addRequirements(mRightActuate);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
@@ -34,7 +33,7 @@ public class colorWheelCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mcolorWheel.spinner(mOn, mOut);
+    mRightActuate.actuate(mOn, mUp);
   }
 
   // Called once the command ends or is interrupted.
@@ -45,6 +44,6 @@ public class colorWheelCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
