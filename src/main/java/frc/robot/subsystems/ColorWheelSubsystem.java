@@ -54,6 +54,7 @@ public class ColorWheelSubsystem extends SubsystemBase {
   }
 
   public void spinner(boolean on) {
+    // TODO: We probably don't want full speed. This will need to be fixed.
     spinner.set(on ? 1 : 0);
   }
 
@@ -87,17 +88,17 @@ public class ColorWheelSubsystem extends SubsystemBase {
   }
 
   private Color convertFMSColor() {
-    Color retval = null;
+    Color retVal = null;
     if (fmsColor == kBlueTarget) {
-      retval = kRedTarget;
+      retVal = kRedTarget;
     } else if (fmsColor == kYellowTarget) {
-      retval = kGreenTarget;
+      retVal = kGreenTarget;
     } else if (fmsColor == kRedTarget) {
-      retval = kBlueTarget;
+      retVal = kBlueTarget;
     } else if (fmsColor == kGreenTarget) {
-      retval = kYellowTarget;
+      retVal = kYellowTarget;
     }
-    return retval;
+    return retVal;
 
   }
 
@@ -146,5 +147,4 @@ public class ColorWheelSubsystem extends SubsystemBase {
     detectColor();
     updateFMS();
   }
-
 }

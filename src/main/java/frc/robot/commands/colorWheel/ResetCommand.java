@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ColorWheelSubsystem;
 
 public class ResetCommand extends CommandBase {
-  private final ColorWheelSubsystem mcolorWheelSubsystem;
+  private final ColorWheelSubsystem mColorWheelSubsystem;
   /**
    * Creates a new ResetCommand.
    */
   public ResetCommand(ColorWheelSubsystem colorWheelSubsystem) {
-    mcolorWheelSubsystem = colorWheelSubsystem;
-    addRequirements(mcolorWheelSubsystem);
+    mColorWheelSubsystem = colorWheelSubsystem;
+    addRequirements(mColorWheelSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -29,7 +29,7 @@ public class ResetCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mcolorWheelSubsystem.reset();
+    mColorWheelSubsystem.reset();
   }
 
   // Called once the command ends or is interrupted.

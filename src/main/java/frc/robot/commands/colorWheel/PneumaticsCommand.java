@@ -13,7 +13,7 @@ import frc.robot.subsystems.ColorWheelSubsystem;
 public class PneumaticsCommand extends CommandBase {
   private final ColorWheelSubsystem mPositioner;
   private final boolean mOn;
- // private final boolean mDown;
+
   /**
    * Creates a new PneumaticsCommand.
    */

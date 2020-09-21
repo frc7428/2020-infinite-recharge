@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.XboxController;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    // TODO: Make Constants static classes
+    // TODO: We will want to do some house keeping here. Drew can talk through what needs to be done.
     public static final int PEW_LEFT_CAN_ID = 1; 
     public static final int PEW_RIGHT_CAN_ID = 2; 
     public static final int REAR_LEFT_CAN_ID = 3;
@@ -48,9 +48,11 @@ public final class Constants {
     public static final int INVERTED_RIGHT_ACTUATOR_BUTTON = 9;
     public static final int INVERTED_LEFT_ACTUATOR_BUTTON = 10;
 
+    // TODO: These are the solenoids. We need to give them real numbers.
     public static final int COLOR_WHEEL_UP = -1;
     public static final int COLOR_WHEEL_DOWN = -1;
 
+    // TODO: These are the color wheel buttons, but we may not have enough buttons free right now?
     public static final int STAGE_ONE_BUTTON = -1;
     public static final int STAGE_TWO_BUTTON = -1;
     public static final int STOP_COLOR_WHEEL = -1;

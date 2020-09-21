@@ -47,8 +47,8 @@ public class RobotContainer {
   private final ColorWheelSubsystem colorWheelSubsystem = new ColorWheelSubsystem();
   private final XboxController driveController = new XboxController(Constants.XBOX_CONTROLLER_USB_ID);
   private final RightActuatorSubsystem rightActuatorSubsystem = new RightActuatorSubsystem();
-  private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem(); 
-  private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem(); 
+  private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem();
+  private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -58,6 +58,7 @@ public class RobotContainer {
     configureButtonBindings();
     driveSubsystem.setDefaultCommand(new DriveCommand(driveSubsystem, driveJoystick));
   }
+
   /**
    * Use this method to define your button->command mappings. Buttons can be
    * created by instantiating a {@link GenericHID} or one of its subclasses
@@ -65,9 +66,11 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON); 
-    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true)); 
-    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true)); 
+    // TODO: Make sure these all still work.
+    
+    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON);
+    intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true));
+    intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true));
 
     JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.INVERTED_INTAKE_BUTTON);
     invertedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false));
@@ -93,7 +96,8 @@ public class RobotContainer {
     leftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true, true));
     leftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false, true));
 
-    JoystickButton invertedLeftActuatorButton = new JoystickButton(driveJoystick, Constants.INVERTED_LEFT_ACTUATOR_BUTTON);
+    JoystickButton invertedLeftActuatorButton = new JoystickButton(driveJoystick,
+        Constants.INVERTED_LEFT_ACTUATOR_BUTTON);
     invertedLeftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true, false));
     invertedLeftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false, false));
 
@@ -101,27 +105,28 @@ public class RobotContainer {
     rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, true));
     rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, true));
 
-    JoystickButton invertedRightActuatorButton = new JoystickButton(driveJoystick, Constants.INVERTED_RIGHT_ACTUATOR_BUTTON);
+    JoystickButton invertedRightActuatorButton = new JoystickButton(driveJoystick,
+        Constants.INVERTED_RIGHT_ACTUATOR_BUTTON);
     invertedRightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, false));
     invertedRightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, false));
 
+    // TODO: These might need some cleaning up.
     final JoystickButton stageOneButton = new JoystickButton(driveController, Constants.STAGE_ONE_BUTTON);
     stageOneButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
-      .andThen(new ResetCommand(colorWheelSubsystem))
-      .andThen(new ColorCountCommand(colorWheelSubsystem)).andThen(new WaitCommand(0.5))
-      .andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
+        .andThen(new ResetCommand(colorWheelSubsystem)).andThen(new ColorCountCommand(colorWheelSubsystem))
+        .andThen(new WaitCommand(0.5)).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
+
     final JoystickButton stageTwoButton = new JoystickButton(driveController, Constants.STAGE_TWO_BUTTON);
     stageTwoButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
-      .andThen(new ResetCommand(colorWheelSubsystem))
-      .andThen(new ColorMatchCommand(colorWheelSubsystem)).andThen(new WaitCommand(0.5))
-      .andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
+        .andThen(new ResetCommand(colorWheelSubsystem)).andThen(new ColorMatchCommand(colorWheelSubsystem))
+        .andThen(new WaitCommand(0.5)).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 
     final JoystickButton stopColorWheel = new JoystickButton(driveController, Constants.STOP_COLOR_WHEEL);
-    stopColorWheel.whenReleased(new StopColorWheel(colorWheelSubsystem)
-      .andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
+    stopColorWheel.whenReleased(
+        new StopColorWheel(colorWheelSubsystem).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 
   }
-  
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
