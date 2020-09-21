@@ -8,21 +8,22 @@
 package frc.robot.commands.actuator;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.RightActuatorSubsystem;
+import frc.robot.subsystems.LeftActuatorSubsystem;
 
-public class rightActuatorCommand extends CommandBase {
-  private final RightActuatorSubsystem mRightActuate;
+public class LeftActuatorCommand extends CommandBase {
+  private final LeftActuatorSubsystem mLeftActuate;
   private final boolean mOn;
   private final boolean mUp;
+
   /**
-   * Creates a new rightActuatorCommand.
+   * Creates a new leftActuatorCommand.
    */
-  public rightActuatorCommand(RightActuatorSubsystem actuate, boolean on, boolean up) {
-    mRightActuate = actuate;
-    mOn = on;
-    mUp = up;
-    addRequirements(mRightActuate);
+  public LeftActuatorCommand(LeftActuatorSubsystem actuator, boolean on, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
+    mActuator = actuator;
+    mOn = on; 
+    mUp = up;
+    addRequirements(mActuator);
   }
 
   // Called when the command is initially scheduled.
@@ -33,7 +34,7 @@ public class rightActuatorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mRightActuate.actuate(mOn, mUp);
+    mActuator.actuate(mOn, mUp); 
   }
 
   // Called once the command ends or is interrupted.

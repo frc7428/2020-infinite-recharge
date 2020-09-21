@@ -13,18 +13,25 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ConveyerSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.CAN_ID.CONVEYER_CAN_ID);
+  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.CONVEYER_CAN_ID);
   /**
    * Creates a new ConveyerSubsystem.
    */
   public ConveyerSubsystem() {
-    
   }
 
   public void convey(boolean on, boolean up) {
-    conveyer.setInverted(up);
-    conveyer.set(on ? Constants.SPEEDS.CONVEYER : 0);
-
+    if (on) {
+      // What to do when the conveyer is ON?
+      if (up) {
+        conveyer.set(1);
+      } else {
+        conveyer.set(-1);
+      }
+    } else {
+      // What to do when the conveyer is OFF?
+      conveyer.set(0);
+    }
   }
 
   @Override

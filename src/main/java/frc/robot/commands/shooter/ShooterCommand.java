@@ -21,7 +21,7 @@ public class ShooterCommand extends CommandBase {
   public ShooterCommand(ShooterSubsystem shooter, boolean on, boolean up) {
     mShooter = shooter;
     mOn = on;
-    mUp = up; 
+    mUp = up;
     addRequirements(mShooter);
     // Use addRequirements() here to declare subsystem dependencies.
   }

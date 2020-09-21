@@ -14,7 +14,6 @@ public class ConveyerCommand extends CommandBase {
   private final ConveyerSubsystem mConveyer;
   private final boolean mOn;
   private final boolean mUp;
-
   /**
    * Creates a new ConveyerCommand.
    */
@@ -22,13 +21,11 @@ public class ConveyerCommand extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     mConveyer = conveyer;
     mOn = on;
-    mUp = up; 
+    mUp = up;
     addRequirements(mConveyer);
   }
 
-
-
-// Called when the command is initially scheduled.
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }

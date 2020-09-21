@@ -22,8 +22,15 @@ public class LeftActuatorSubsystem extends SubsystemBase {
   }
 
   public void actuate(boolean on, boolean up) {
-    leftActuator.setInverted(up);
-    leftActuator.set(on ? 1 : 0); 
+    if (on) {
+      if (up) {
+        leftActuator.set(1);
+      } else {
+        leftActuator.set(-1);
+      }
+    } else {
+      leftActuator.set(0);
+    }
   }
 
   @Override
