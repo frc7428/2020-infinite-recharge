@@ -17,10 +17,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class MecanumDriveSubsystem extends SubsystemBase {
-  private final SpeedController frontLeft = new CANSparkMax(Constants.FRONT_LEFT_CAN_ID, MotorType.kBrushless);
-  private final SpeedController frontRight = new CANSparkMax(Constants.FRONT_RIGHT_CAN_ID, MotorType.kBrushless);
-  private final SpeedController rearLeft = new CANSparkMax(Constants.REAR_LEFT_CAN_ID, MotorType.kBrushless);
-  private final SpeedController rearRight = new CANSparkMax(Constants.REAR_RIGHT_CAN_ID, MotorType.kBrushless);
+  private final SpeedController frontLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.FRONT_LEFT, MotorType.kBrushless);
+  private final SpeedController frontRight = new CANSparkMax(Constants.SPARK_MAX_CAN.FRONT_RIGHT, MotorType.kBrushless);
+  private final SpeedController rearLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.REAR_LEFT, MotorType.kBrushless);
+  private final SpeedController rearRight = new CANSparkMax(Constants.SPARK_MAX_CAN.REAR_RIGHT, MotorType.kBrushless);
   private final MecanumDrive drive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
   /**

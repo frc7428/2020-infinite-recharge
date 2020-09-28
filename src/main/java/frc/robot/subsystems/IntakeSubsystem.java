@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class IntakeSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX intake = new WPI_VictorSPX(Constants.INTAKE_CAN_ID);
+  private final WPI_VictorSPX intake = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.INTAKE_CAN_ID);
   
   /**
    * Creates a new IntakeSubsystem.

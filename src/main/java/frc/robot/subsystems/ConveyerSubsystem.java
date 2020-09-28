@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ConveyerSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.CONVEYER_CAN_ID);
+  private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.CONVEYER_CAN_ID);
   /**
    * Creates a new ConveyerSubsystem.
    */

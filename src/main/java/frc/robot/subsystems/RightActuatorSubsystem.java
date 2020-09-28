@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class RightActuatorSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX rightActuator = new WPI_VictorSPX(Constants.RIGHT_ACTUATOR_CAN_ID);
+  private final WPI_VictorSPX rightActuator = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.RIGHT_ACTUATOR_CAN_ID);
   /**
    * Creates a new RightActuatorSubsystem.
    */

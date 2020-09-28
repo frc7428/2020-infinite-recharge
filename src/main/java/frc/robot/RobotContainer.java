@@ -43,10 +43,10 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final MecanumDriveSubsystem driveSubsystem = new MecanumDriveSubsystem();
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-  private final Joystick driveJoystick = new Joystick(Constants.DRIVE_JOYSTICK_USB_ID);
+  private final Joystick driveJoystick = new Joystick(Constants.COMPUTER_USB_PORTS.DRIVE_JOYSTICK_USB_ID);
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   private final ColorWheelSubsystem colorWheelSubsystem = new ColorWheelSubsystem();
-  private final XboxController driveController = new XboxController(Constants.XBOX_CONTROLLER_USB_ID);
+  private final XboxController driveController = new XboxController(Constants.COMPUTER_USB_PORTS.XBOX_CONTROLLER_USB_ID);
   private final RightActuatorSubsystem rightActuatorSubsystem = new RightActuatorSubsystem();
   private final LeftActuatorSubsystem leftActuatorSubsystem = new LeftActuatorSubsystem();
   private final ConveyerSubsystem conveyerSubsystem = new ConveyerSubsystem();
@@ -68,59 +68,57 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     
-    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON);
+    JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.BUTTON_ID.INTAKE_BUTTON);
     intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true));
     intakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, true));
 
-    JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.INVERTED_INTAKE_BUTTON);
+    JoystickButton invertedIntakeButton = new JoystickButton(driveJoystick, Constants.INVERTED_BUTTON_ID.INVERTED_INTAKE_BUTTON);
     invertedIntakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, false));
     invertedIntakeButton.whenReleased(new IntakeCommand(intakeSubsystem, false, false));
 
-    JoystickButton conveyerButton = new JoystickButton(driveController, Constants.CONVEYER_BUTTON);
+    JoystickButton conveyerButton = new JoystickButton(driveController, Constants.BUTTON_ID.CONVEYER_BUTTON);
     conveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, true));
     conveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, true));
 
-    JoystickButton invertedConveyerButton = new JoystickButton(driveController, Constants.INVERTED_CONVEYER_BUTTON);
+    JoystickButton invertedConveyerButton = new JoystickButton(driveController, Constants.INVERTED_BUTTON_ID.INVERTED_CONVEYER_BUTTON);
     invertedConveyerButton.whileHeld(new ConveyerCommand(conveyerSubsystem, true, false));
     invertedConveyerButton.whenReleased(new ConveyerCommand(conveyerSubsystem, false, false));
 
-    JoystickButton shooterButton = new JoystickButton(driveController, Constants.SHOOTER_BUTTON);
+    JoystickButton shooterButton = new JoystickButton(driveController, Constants.BUTTON_ID.SHOOTER_BUTTON);
     shooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true, true));
     shooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false, true));
 
-    JoystickButton invertedShooterButton = new JoystickButton(driveController, Constants.INVERTED_SHOOTER_BUTTON);
+    JoystickButton invertedShooterButton = new JoystickButton(driveController, Constants.INVERTED_BUTTON_ID.INVERTED_SHOOTER_BUTTON);
     invertedShooterButton.whileHeld(new ShooterCommand(shooterSubsystem, true, false));
     invertedShooterButton.whenReleased(new ShooterCommand(shooterSubsystem, false, false));
 
-    JoystickButton leftActuatorButton = new JoystickButton(driveController, Constants.LEFT_ACTUATOR_BUTTON);
+    JoystickButton leftActuatorButton = new JoystickButton(driveController, Constants.BUTTON_ID.LEFT_ACTUATOR_BUTTON);
     leftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true, true));
     leftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false, true));
 
-    JoystickButton invertedLeftActuatorButton = new JoystickButton(driveJoystick,
-        Constants.INVERTED_LEFT_ACTUATOR_BUTTON);
+    JoystickButton invertedLeftActuatorButton = new JoystickButton(driveJoystick, Constants.INVERTED_BUTTON_ID.INVERTED_LEFT_ACTUATOR_BUTTON);
     invertedLeftActuatorButton.whileHeld(new LeftActuatorCommand(leftActuatorSubsystem, true, false));
     invertedLeftActuatorButton.whenReleased(new LeftActuatorCommand(leftActuatorSubsystem, false, false));
 
-    JoystickButton rightActuatorButton = new JoystickButton(driveController, Constants.RIGHT_ACTUATOR_BUTTON);
+    JoystickButton rightActuatorButton = new JoystickButton(driveController, Constants.BUTTON_ID.RIGHT_ACTUATOR_BUTTON);
     rightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, true));
     rightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, true));
 
-    JoystickButton invertedRightActuatorButton = new JoystickButton(driveJoystick,
-        Constants.INVERTED_RIGHT_ACTUATOR_BUTTON);
+    JoystickButton invertedRightActuatorButton = new JoystickButton(driveJoystick, Constants.INVERTED_BUTTON_ID.INVERTED_RIGHT_ACTUATOR_BUTTON);
     invertedRightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, false));
     invertedRightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, false));
 
-    final POVButton stageOneButton = new POVButton(driveController, Constants.STAGE_ONE_POV);
+    final POVButton stageOneButton = new POVButton(driveController, Constants.COLOR_WHEEL_BUTTONS.STAGE_ONE_POV);
     stageOneButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
         .andThen(new ResetCommand(colorWheelSubsystem)).andThen(new ColorCountCommand(colorWheelSubsystem))
         .andThen(new WaitCommand(0.5)).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 
-    final POVButton stageTwoButton = new POVButton(driveController, Constants.STAGE_TWO_POV);
+    final POVButton stageTwoButton = new POVButton(driveController, Constants.COLOR_WHEEL_BUTTONS.STAGE_TWO_POV);
     stageTwoButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
         .andThen(new ResetCommand(colorWheelSubsystem)).andThen(new ColorMatchCommand(colorWheelSubsystem))
         .andThen(new WaitCommand(0.5)).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 
-    final POVButton stopColorWheel = new POVButton(driveController, Constants.STOP_COLOR_WHEEL_POV);
+    final POVButton stopColorWheel = new POVButton(driveController, Constants.COLOR_WHEEL_BUTTONS.STOP_COLOR_WHEEL_POV);
     stopColorWheel.whenReleased(
         new StopColorWheel(colorWheelSubsystem).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 

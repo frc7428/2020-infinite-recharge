@@ -20,7 +20,11 @@ import edu.wpi.first.wpilibj.XboxController;
 public final class Constants {
     // TODO: We will want to do some house keeping here. Drew can talk through what needs to be done.
     public static final class VICTOR_SPX_CAN {
-        public static final int INTAKE_CAN_ID = 
+        public static final int INTAKE_CAN_ID = 4;
+        public static final int COLOR_WHEEL_CAN_ID = 6; 
+        public static final int CONVEYER_CAN_ID = 7; 
+        public static final int RIGHT_ACTUATOR_CAN_ID = 5; 
+        public static final int LEFT_ACTUATOR_CAN_ID = 8;
     }
     public static final class SPARK_MAX_CAN {
         public static final int PEW_LEFT = 1;
@@ -30,33 +34,35 @@ public final class Constants {
         public static final int FRONT_LEFT = 5;
         public static final int FRONT_RIGHT = 6;
     }
-    public static final int INTAKE_CAN_ID = 4;
-    public static final int RIGHT_ACTUATOR_CAN_ID = 5;   
-    public static final int COLOR_WHEEL_CAN_ID = 6;
-    public static final int CONVEYER_CAN_ID = 7;
-    public static final int LEFT_ACTUATOR_CAN_ID = 8;
+
+    public static final class BUTTON_ID {
+        public static final int INTAKE_BUTTON = 2;
+        public static final int CONVEYER_BUTTON = XboxController.Button.kX.value; 
+        public static final int SHOOTER_BUTTON = XboxController.Button.kY.value; 
+        public static final int RIGHT_ACTUATOR_BUTTON = XboxController.Button.kBumperRight.value;
+        public static final int LEFT_ACTUATOR_BUTTON = XboxController.Button.kBumperLeft.value;
+    }
+
+    public static final class INVERTED_BUTTON_ID {
+        public static final int INVERTED_INTAKE_BUTTON = 7;
+        public static final int INVERTED_CONVEYER_BUTTON = XboxController.Button.kA.value; 
+        public static final int INVERTED_SHOOTER_BUTTON = XboxController.Button.kX.value;
+        public static final int INVERTED_LEFT_ACTUATOR_BUTTON = 10;
+        public static final int INVERTED_RIGHT_ACTUATOR_BUTTON = 9;
+    }
+
+    public static final class COMPUTER_USB_PORTS {
+        public static final int DRIVE_JOYSTICK_USB_ID = 0;
+        public static final int XBOX_CONTROLLER_USB_ID = 1;
+    }
     
-    public static final int DRIVE_JOYSTICK_USB_ID = 0;
-    public static final int XBOX_CONTROLLER_USB_ID = 1;
+    public static final class COLOR_WHEEL_BUTTONS {
+        public static final int COLOR_WHEEL_UP = 1;
+        public static final int COLOR_WHEEL_DOWN = 0;
+        public static final int STAGE_ONE_POV = 0;
+        public static final int STAGE_TWO_POV = 90;
+        public static final int STOP_COLOR_WHEEL_POV = 180; 
+    }
+
     
-    public static final int INTAKE_BUTTON = 2;
-    public static final int INVERTED_INTAKE_BUTTON = 7;
-    public static final int CONVEYER_BUTTON = XboxController.Button.kX.value; 
-    public static final int INVERTED_CONVEYER_BUTTON = XboxController.Button.kA.value;
-
-    public static final int COLOR_WHEEL_BUTTON = XboxController.Button.kB.value;
-    public static final int SHOOTER_BUTTON = XboxController.Button.kY.value;
-    public static final int INVERTED_SHOOTER_BUTTON = XboxController.Button.kStart.value;
-
-    public static final int RIGHT_ACTUATOR_BUTTON = XboxController.Button.kBumperRight.value;
-    public static final int LEFT_ACTUATOR_BUTTON = XboxController.Button.kBumperLeft.value;
-    public static final int INVERTED_RIGHT_ACTUATOR_BUTTON = 9;
-    public static final int INVERTED_LEFT_ACTUATOR_BUTTON = 10;
-
-    public static final int COLOR_WHEEL_UP = 1;
-    public static final int COLOR_WHEEL_DOWN = 0;
-
-    public static final int STAGE_ONE_POV = 0;
-    public static final int STAGE_TWO_POV = 90;
-    public static final int STOP_COLOR_WHEEL_POV = 180;
 }
