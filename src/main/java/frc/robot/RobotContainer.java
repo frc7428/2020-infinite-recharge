@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.actuator.LeftActuatorCommand;
 import frc.robot.commands.actuator.RightActuatorCommand;
 import frc.robot.commands.colorWheel.ColorCountCommand;
@@ -66,7 +67,6 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // TODO: Make sure these all still work.
     
     JoystickButton intakeButton = new JoystickButton(driveJoystick, Constants.INTAKE_BUTTON);
     intakeButton.whileHeld(new IntakeCommand(intakeSubsystem, true, true));
@@ -110,18 +110,17 @@ public class RobotContainer {
     invertedRightActuatorButton.whileHeld(new RightActuatorCommand(rightActuatorSubsystem, true, false));
     invertedRightActuatorButton.whenReleased(new RightActuatorCommand(rightActuatorSubsystem, false, false));
 
-    // TODO: These might need some cleaning up.
-    final JoystickButton stageOneButton = new JoystickButton(driveController, Constants.STAGE_ONE_BUTTON);
+    final POVButton stageOneButton = new POVButton(driveController, Constants.STAGE_ONE_POV);
     stageOneButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
         .andThen(new ResetCommand(colorWheelSubsystem)).andThen(new ColorCountCommand(colorWheelSubsystem))
         .andThen(new WaitCommand(0.5)).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 
-    final JoystickButton stageTwoButton = new JoystickButton(driveController, Constants.STAGE_TWO_BUTTON);
+    final POVButton stageTwoButton = new POVButton(driveController, Constants.STAGE_TWO_POV);
     stageTwoButton.whenReleased(new PneumaticsCommand(colorWheelSubsystem, false)
         .andThen(new ResetCommand(colorWheelSubsystem)).andThen(new ColorMatchCommand(colorWheelSubsystem))
         .andThen(new WaitCommand(0.5)).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 
-    final JoystickButton stopColorWheel = new JoystickButton(driveController, Constants.STOP_COLOR_WHEEL);
+    final POVButton stopColorWheel = new POVButton(driveController, Constants.STOP_COLOR_WHEEL_POV);
     stopColorWheel.whenReleased(
         new StopColorWheel(colorWheelSubsystem).andThen(new PneumaticsCommand(colorWheelSubsystem, true)));
 

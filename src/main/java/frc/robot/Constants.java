@@ -19,14 +19,19 @@ import edu.wpi.first.wpilibj.XboxController;
  */
 public final class Constants {
     // TODO: We will want to do some house keeping here. Drew can talk through what needs to be done.
-    public static final int PEW_LEFT_CAN_ID = 1; 
-    public static final int PEW_RIGHT_CAN_ID = 2; 
-    public static final int REAR_LEFT_CAN_ID = 3;
-    public static final int REAR_RIGHT_CAN_ID = 4;
+    public static final class VICTOR_SPX_CAN {
+        public static final int INTAKE_CAN_ID = 
+    }
+    public static final class SPARK_MAX_CAN {
+        public static final int PEW_LEFT = 1;
+        public static final int PEW_RIGHT = 2;
+        public static final int REAR_LEFT = 3;
+        public static final int REAR_RIGHT = 4;
+        public static final int FRONT_LEFT = 5;
+        public static final int FRONT_RIGHT = 6;
+    }
     public static final int INTAKE_CAN_ID = 4;
-    public static final int FRONT_LEFT_CAN_ID = 5;
-    public static final int RIGHT_ACTUATOR_CAN_ID = 5;
-    public static final int FRONT_RIGHT_CAN_ID = 6;
+    public static final int RIGHT_ACTUATOR_CAN_ID = 5;   
     public static final int COLOR_WHEEL_CAN_ID = 6;
     public static final int CONVEYER_CAN_ID = 7;
     public static final int LEFT_ACTUATOR_CAN_ID = 8;
@@ -48,12 +53,10 @@ public final class Constants {
     public static final int INVERTED_RIGHT_ACTUATOR_BUTTON = 9;
     public static final int INVERTED_LEFT_ACTUATOR_BUTTON = 10;
 
-    // TODO: These are the solenoids. We need to give them real numbers.
-    public static final int COLOR_WHEEL_UP = -1;
-    public static final int COLOR_WHEEL_DOWN = -1;
+    public static final int COLOR_WHEEL_UP = 1;
+    public static final int COLOR_WHEEL_DOWN = 0;
 
-    // TODO: These are the color wheel buttons, but we may not have enough buttons free right now?
-    public static final int STAGE_ONE_BUTTON = -1;
-    public static final int STAGE_TWO_BUTTON = -1;
-    public static final int STOP_COLOR_WHEEL = -1;
+    public static final int STAGE_ONE_POV = 0;
+    public static final int STAGE_TWO_POV = 90;
+    public static final int STOP_COLOR_WHEEL_POV = 180;
 }
