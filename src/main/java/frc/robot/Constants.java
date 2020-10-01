@@ -47,7 +47,7 @@ public final class Constants {
         public static final int RIGHT_ACTUATOR = XboxController.Button.kBumperRight.value;
         public static final int LEFT_ACTUATOR = XboxController.Button.kBumperLeft.value;
         public static final int INVERTED_CONVEYER = XboxController.Button.kA.value; 
-        public static final int INVERTED_SHOOTER = XboxController.Button.kX.value;
+        public static final int INVERTED_SHOOTER = XboxController.Button.kStart.value;
         
         public static final int STAGE_ONE_POV = 0;
         public static final int STAGE_TWO_POV = 90;

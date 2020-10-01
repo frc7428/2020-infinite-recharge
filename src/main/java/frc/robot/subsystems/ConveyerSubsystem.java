@@ -25,8 +25,7 @@ public class ConveyerSubsystem extends SubsystemBase {
       // What to do when the conveyer is ON?
       if (up) {
         conveyer.set(1);
-      } else {
-        conveyer.set(-1);
+    
       }
     } else {
       // What to do when the conveyer is OFF?

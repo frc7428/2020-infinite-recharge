@@ -31,9 +31,9 @@ public class ShooterSubsystem extends SubsystemBase {
   public void shooter(boolean on, boolean up) {
     if (on) {
       if (up) {
-        pew.set(1);
-      } else {
         pew.set(-1);
+      } else {
+        pew.set(1);
       }
     } else {
       pew.set(0);
