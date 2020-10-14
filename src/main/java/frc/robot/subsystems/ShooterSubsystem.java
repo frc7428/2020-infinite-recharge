@@ -23,7 +23,7 @@ public class ShooterSubsystem extends SubsystemBase {
   public ShooterSubsystem() {
     CANSparkMax pewLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.PEW_LEFT, MotorType.kBrushless);
     CANSparkMax pewRight = new CANSparkMax(Constants.SPARK_MAX_CAN.PEW_RIGHT, MotorType.kBrushless);
-    pewRight.setInverted(false);
+    pewRight.setInverted(true);
 
     pew = new SpeedControllerGroup(pewLeft, pewRight);
   }

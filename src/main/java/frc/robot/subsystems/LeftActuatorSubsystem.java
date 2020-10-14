@@ -9,11 +9,15 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class LeftActuatorSubsystem extends SubsystemBase {
   private final WPI_VictorSPX leftActuator = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.LEFT_ACTUATOR_CAN_ID);
+
+  private final DigitalInput mUpperLimit = new DigitalInput(Constants.DIGITAL_INPUTS.ACTUATOR_UPPER);
+  private final DigitalInput mLowerLimit = new DigitalInput(Constants.DIGITAL_INPUTS.ACTUATOR_LOWER);
   /**
    * Creates a new LeftActuatorSubsystem.
    */
@@ -22,8 +26,9 @@ public class LeftActuatorSubsystem extends SubsystemBase {
   }
 
   public void actuate(boolean on, boolean up) {
-    if (on) {
-      if (up) {
+    if (mUpperLimit.get()) {
+      stop(); {
+      } else if (up) {
         leftActuator.set(1);
       } else {
         leftActuator.set(-1);
