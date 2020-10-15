@@ -16,8 +16,7 @@ import frc.robot.Constants;
 public class LeftActuatorSubsystem extends SubsystemBase {
   private final WPI_VictorSPX leftActuator = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.LEFT_ACTUATOR_CAN_ID);
 
-  private final DigitalInput mUpperLimit = new DigitalInput(Constants.DIGITAL_INPUTS.ACTUATOR_UPPER);
-  private final DigitalInput mLowerLimit = new DigitalInput(Constants.DIGITAL_INPUTS.ACTUATOR_LOWER);
+  private final DigitalInput mLowerLimit = new DigitalInput(Constants.DIGITAL_INPUTS.LEFT_ACTUATOR_LOWER);
   /**
    * Creates a new LeftActuatorSubsystem.
    */
@@ -26,12 +25,13 @@ public class LeftActuatorSubsystem extends SubsystemBase {
   }
 
   public void actuate(boolean on, boolean up) {
-    if (mUpperLimit.get()) {
-      stop(); {
-      } else if (up) {
+    if (on) {
+      if (up) {
         leftActuator.set(1);
-      } else {
+      } else if (!up && !mLowerLimit.get()) {
         leftActuator.set(-1);
+      } else {
+        leftActuator.set(0);
       }
     } else {
       leftActuator.set(0);

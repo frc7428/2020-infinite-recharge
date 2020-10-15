@@ -63,4 +63,9 @@ public final class Constants {
         public static final int COLOR_WHEEL_UP = 1;
         public static final int COLOR_WHEEL_DOWN = 0;
     }
+    
+    public static final class DIGITAL_INPUTS {
+        public static final int LEFT_ACTUATOR_LOWER = 0;
+        public static final int RIGHT_ACTUATOR_LOWER = 1;
+    }
 }
