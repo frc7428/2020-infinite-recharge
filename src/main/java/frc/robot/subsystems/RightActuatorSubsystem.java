@@ -30,7 +30,7 @@ public class RightActuatorSubsystem extends SubsystemBase {
     if (on) {
       if (up){
         rightActuator.set(1);
-      } else if (!up && !mLowerLimit.get()){
+      } else if (!up && mLowerLimit.get()){
         rightActuator.set(-1);
       } else {
         rightActuator.set(0);

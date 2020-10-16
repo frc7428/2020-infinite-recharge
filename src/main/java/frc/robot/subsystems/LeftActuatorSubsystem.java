@@ -28,7 +28,7 @@ public class LeftActuatorSubsystem extends SubsystemBase {
     if (on) {
       if (up) {
         leftActuator.set(1);
-      } else if (!up && !mLowerLimit.get()) {
+      } else if (!up && mLowerLimit.get()) {
         leftActuator.set(-1);
       } else {
         leftActuator.set(0);
