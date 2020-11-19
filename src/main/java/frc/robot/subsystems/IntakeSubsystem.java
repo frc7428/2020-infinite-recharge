@@ -22,9 +22,9 @@ public class IntakeSubsystem extends SubsystemBase {
   public IntakeSubsystem() {
   }
 
-  public void intake(boolean on, boolean up) {
-    if (on) {
-      if (up) {
+  public void intake(boolean mOn, boolean mUp) {
+    if (mOn) {
+      if (mUp) {
         intake.set(1);
       } else {
         intake.set(-1);
@@ -38,4 +38,6 @@ public class IntakeSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+
 }

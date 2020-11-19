@@ -21,6 +21,7 @@ import frc.robot.commands.colorWheel.PneumaticsCommand;
 import frc.robot.commands.colorWheel.ResetCommand;
 import frc.robot.commands.colorWheel.StopColorWheel;
 import frc.robot.commands.conveyer.ConveyerCommand;
+import frc.robot.commands.drive.AutoDriveCommand;
 import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.intake.IntakeCommand;
 import frc.robot.commands.shooter.ShooterCommand;
@@ -131,6 +132,8 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null;
+    return new AutoDriveCommand(driveSubsystem, 1, 0, 0)
+    .andThen(new WaitCommand(5))
+    .andThen(new AutoDriveCommand(driveSubsystem, 0, 0, 0));
   }
 }
