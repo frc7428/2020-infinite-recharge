@@ -141,9 +141,9 @@ public class RobotContainer {
     .andThen(new AutoDriveCommand(driveSubsystem, 0, 0, 0))
     .andThen(new ParallelRaceGroup(new AutoIntakeCommand(intakeSubsystem, true, true), new WaitCommand(2)))
     .andThen(new ParallelRaceGroup(new AutoIntakeCommand(intakeSubsystem, false, false)))
-    .andThen(new ParallelRaceGroup(new AutoShooterCommand(shooterSubsystem, true, true)))
+    .andThen(new ParallelRaceGroup(new AutoShooterCommand(shooterSubsystem, true, true), new WaitCommand(2)))
     .andThen(new ParallelRaceGroup(new AutoShooterCommand(shooterSubsystem, false, false)))
-    .andThen(new ParallelRaceGroup(new AutoConveyerCommand(conveyerSubsystem, true, true)))
+    .andThen(new ParallelRaceGroup(new AutoConveyerCommand(conveyerSubsystem, true, true), new WaitCommand(2)))
     .andThen(new ParallelRaceGroup(new AutoConveyerCommand(conveyerSubsystem, false, false)));
   }
 }
