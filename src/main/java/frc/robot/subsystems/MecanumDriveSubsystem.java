@@ -8,25 +8,29 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class MecanumDriveSubsystem extends SubsystemBase {
-  private final SpeedController frontLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.FRONT_LEFT, MotorType.kBrushless);
-  private final SpeedController frontRight = new CANSparkMax(Constants.SPARK_MAX_CAN.FRONT_RIGHT, MotorType.kBrushless);
-  private final SpeedController rearLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.REAR_LEFT, MotorType.kBrushless);
-  private final SpeedController rearRight = new CANSparkMax(Constants.SPARK_MAX_CAN.REAR_RIGHT, MotorType.kBrushless);
+  private final CANSparkMax frontLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.FRONT_LEFT, MotorType.kBrushless);
+  private final CANSparkMax frontRight = new CANSparkMax(Constants.SPARK_MAX_CAN.FRONT_RIGHT, MotorType.kBrushless);
+  private final CANSparkMax rearLeft = new CANSparkMax(Constants.SPARK_MAX_CAN.REAR_LEFT, MotorType.kBrushless);
+  private final CANSparkMax rearRight = new CANSparkMax(Constants.SPARK_MAX_CAN.REAR_RIGHT, MotorType.kBrushless);
   private final MecanumDrive drive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
   /**
    * Creates a new MecanumDrive.
    */
   public MecanumDriveSubsystem() {
+    frontLeft.setIdleMode(IdleMode.kBrake);
+    frontRight.setIdleMode(IdleMode.kBrake);
+    rearLeft.setIdleMode(IdleMode.kBrake);
+    rearRight.setIdleMode(IdleMode.kBrake);
 
   }
  

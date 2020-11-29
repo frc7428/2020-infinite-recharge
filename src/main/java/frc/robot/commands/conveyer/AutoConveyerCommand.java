@@ -5,28 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.drive;
+package frc.robot.commands.conveyer;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.MecanumDriveSubsystem;
+import frc.robot.subsystems.ConveyerSubsystem;
 
-public class AutoDriveCommand extends CommandBase {
-  private final MecanumDriveSubsystem mDrive;
-
-  private final double mForwardSpeed;
-  private final double mRightSpeed;
-  private final double mClockwiseSpeed;
-
+public class AutoConveyerCommand extends CommandBase {
+  private final ConveyerSubsystem mAutoConvey;
+  private final boolean mOn;
+  private final boolean mUp;
   /**
-   * Creates a new AutoDriveCommand.
+   * Creates a new AutoConveyerCommand.
    */
-  public AutoDriveCommand(MecanumDriveSubsystem drive, double forwardSpeed, double rightSpeed, double clockwiseSpeed) {
-    mDrive = drive;
-    mForwardSpeed = forwardSpeed;
-    mRightSpeed = rightSpeed;
-    mClockwiseSpeed = clockwiseSpeed;
-    addRequirements(mDrive);
+  public AutoConveyerCommand(ConveyerSubsystem conveyer, boolean on, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
+    mAutoConvey = conveyer;
+    mOn = on;
+    mUp = up;
   }
 
   // Called when the command is initially scheduled.
@@ -37,7 +32,7 @@ public class AutoDriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mDrive.drive(mForwardSpeed, mRightSpeed, mClockwiseSpeed);
+    mAutoConvey.convey(mOn, mUp);
   }
 
   // Called once the command ends or is interrupted.

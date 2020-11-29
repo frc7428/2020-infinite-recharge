@@ -5,27 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.drive;
+package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.MecanumDriveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 
-public class AutoDriveCommand extends CommandBase {
-  private final MecanumDriveSubsystem mDrive;
-
-  private final double mForwardSpeed;
-  private final double mRightSpeed;
-  private final double mClockwiseSpeed;
+public class AutoIntakeCommand extends CommandBase {
+  private final IntakeSubsystem mAutoIntake;
+  private final boolean mOn;
+  private final boolean mUp;
 
   /**
-   * Creates a new AutoDriveCommand.
+   * Creates a new AutoIntakeCommand.
    */
-  public AutoDriveCommand(MecanumDriveSubsystem drive, double forwardSpeed, double rightSpeed, double clockwiseSpeed) {
-    mDrive = drive;
-    mForwardSpeed = forwardSpeed;
-    mRightSpeed = rightSpeed;
-    mClockwiseSpeed = clockwiseSpeed;
-    addRequirements(mDrive);
+  public AutoIntakeCommand(IntakeSubsystem intake, boolean on, boolean up) {
+    mAutoIntake = intake;
+    mOn = on;
+    mUp = up;
+    addRequirements(mAutoIntake);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -37,7 +34,7 @@ public class AutoDriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mDrive.drive(mForwardSpeed, mRightSpeed, mClockwiseSpeed);
+    mAutoIntake.intake(mOn, mUp);
   }
 
   // Called once the command ends or is interrupted.

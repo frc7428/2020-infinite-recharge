@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -20,11 +21,14 @@ import frc.robot.commands.colorWheel.ColorMatchCommand;
 import frc.robot.commands.colorWheel.PneumaticsCommand;
 import frc.robot.commands.colorWheel.ResetCommand;
 import frc.robot.commands.colorWheel.StopColorWheel;
+import frc.robot.commands.conveyer.AutoConveyerCommand;
 import frc.robot.commands.conveyer.ConveyerCommand;
 import frc.robot.commands.drive.AutoDriveCommand;
 import frc.robot.commands.drive.DriveCommand;
+import frc.robot.commands.intake.AutoIntakeCommand;
 import frc.robot.commands.intake.IntakeCommand;
 import frc.robot.commands.shooter.ShooterCommand;
+import frc.robot.commands.shooter.AutoShooterCommand;
 import frc.robot.subsystems.ColorWheelSubsystem;
 import frc.robot.subsystems.ConveyerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -132,8 +136,14 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new AutoDriveCommand(driveSubsystem, 1, 0, 0)
-    .andThen(new WaitCommand(5))
-    .andThen(new AutoDriveCommand(driveSubsystem, 0, 0, 0));
+    return new ParallelRaceGroup(new AutoDriveCommand(driveSubsystem, -0.5, 0, 0), new WaitCommand(2))
+    .andThen(new ParallelRaceGroup(new AutoDriveCommand(driveSubsystem, 0.5, 0, 0), new WaitCommand(2)))  
+    .andThen(new AutoDriveCommand(driveSubsystem, 0, 0, 0))
+    .andThen(new ParallelRaceGroup(new AutoIntakeCommand(intakeSubsystem, true, true), new WaitCommand(2)))
+    .andThen(new ParallelRaceGroup(new AutoIntakeCommand(intakeSubsystem, false, false)))
+    .andThen(new ParallelRaceGroup(new AutoShooterCommand(shooterSubsystem, true, true)))
+    .andThen(new ParallelRaceGroup(new AutoShooterCommand(shooterSubsystem, false, false)))
+    .andThen(new ParallelRaceGroup(new AutoConveyerCommand(conveyerSubsystem, true, true)))
+    .andThen(new ParallelRaceGroup(new AutoConveyerCommand(conveyerSubsystem, false, false)));
   }
 }
