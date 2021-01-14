@@ -19,11 +19,11 @@ import edu.wpi.first.wpilibj.XboxController;
  */
 public final class Constants {
     public static final class VICTOR_SPX_CAN {
-        public static final int INTAKE_CAN_ID = 4;
         public static final int RIGHT_ACTUATOR_CAN_ID = 5; 
         public static final int COLOR_WHEEL_CAN_ID = 6; 
-        public static final int CONVEYER_CAN_ID = 7; 
+        public static final int MAIN_CONVEYER_CAN_ID = 7; 
         public static final int LEFT_ACTUATOR_CAN_ID = 8;
+        public static final int AUXILIARY_CONVEYER_CAN_ID = 9;
     }
     public static final class SPARK_MAX_CAN {
         public static final int PEW_LEFT = 1;
@@ -32,6 +32,8 @@ public final class Constants {
         public static final int REAR_RIGHT = 4;
         public static final int FRONT_LEFT = 5;
         public static final int FRONT_RIGHT = 6;
+        public static final int INTAKE_CAN_ID = 7;
+
     }
 
     public static final class DRIVE_JOYSTICK_BUTTONS {

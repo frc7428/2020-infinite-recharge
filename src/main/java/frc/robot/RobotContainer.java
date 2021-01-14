@@ -136,14 +136,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new ParallelRaceGroup(new AutoDriveCommand(driveSubsystem, -0.5, 0, 0), new WaitCommand(2))
-    .andThen(new ParallelRaceGroup(new AutoDriveCommand(driveSubsystem, 0.5, 0, 0), new WaitCommand(2)))  
-    .andThen(new AutoDriveCommand(driveSubsystem, 0, 0, 0))
-    .andThen(new ParallelRaceGroup(new AutoIntakeCommand(intakeSubsystem, true, true), new WaitCommand(2)))
-    .andThen(new ParallelRaceGroup(new AutoIntakeCommand(intakeSubsystem, false, false)))
-    .andThen(new ParallelRaceGroup(new AutoShooterCommand(shooterSubsystem, true, true), new WaitCommand(2)))
-    .andThen(new ParallelRaceGroup(new AutoShooterCommand(shooterSubsystem, false, false)))
-    .andThen(new ParallelRaceGroup(new AutoConveyerCommand(conveyerSubsystem, true, true), new WaitCommand(2)))
-    .andThen(new ParallelRaceGroup(new AutoConveyerCommand(conveyerSubsystem, false, false)));
+    return new ParallelRaceGroup(new AutoDriveCommand(driveSubsystem, -0.5, 0, 0), new WaitCommand(3))
+    .andThen(new ParallelRaceGroup(new AutoDriveCommand(driveSubsystem, 0.5, 0, 0), new WaitCommand(3))); 
+    
+    
   }
 }

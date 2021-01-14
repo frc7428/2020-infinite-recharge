@@ -17,9 +17,9 @@ public class AutoConveyerCommand extends CommandBase {
   /**
    * Creates a new AutoConveyerCommand.
    */
-  public AutoConveyerCommand(ConveyerSubsystem conveyer, boolean on, boolean up) {
+  public AutoConveyerCommand(ConveyerSubsystem convey, boolean on, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
-    mAutoConvey = conveyer;
+    mAutoConvey = convey;
     mOn = on;
     mUp = up;
   }

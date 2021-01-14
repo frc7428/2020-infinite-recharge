@@ -8,13 +8,14 @@
 package frc.robot.subsystems;
 
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class IntakeSubsystem extends SubsystemBase {
-  private final WPI_VictorSPX intake = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.INTAKE_CAN_ID);
+  private final CANSparkMax intake = new CANSparkMax(Constants.SPARK_MAX_CAN.INTAKE_CAN_ID, MotorType.kBrushless);
   
   /**
    * Creates a new IntakeSubsystem.
@@ -22,7 +23,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public IntakeSubsystem() {
   }
 
-  public void intake(boolean mOn, boolean mUp) {
+  public void intake(Boolean mOn, Boolean mUp) {
     if (mOn) {
       if (mUp) {
         intake.set(1);
