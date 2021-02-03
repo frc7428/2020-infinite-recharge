@@ -14,11 +14,11 @@ import frc.robot.Constants;
 
 public class ConveyerSubsystem extends SubsystemBase {
   private final WPI_VictorSPX conveyer = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.MAIN_CONVEYER_CAN_ID);
-  private final WPI_VictorSPX auxConveyer = new WPI_VictorSPX(Constants.VICTOR_SPX_CAN.AUXILIARY_CONVEYER_CAN_ID);
   /**
    * Creates a new ConveyerSubsystem.
    */
   public ConveyerSubsystem() {
+  
   }
 
   public void convey(boolean on, boolean up) {
